@@ -1,0 +1,90 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/global/Header.astro";
+import HeaderLaptop from "../components/global/HeaderLaptop.astro";
+import HeaderMobile from "../components/global/HeaderMobile.astro";
+import Hero from "../components/sections/Hero.astro";
+import About from "../components/sections/About.astro";
+import Contigo from "../components/sections/Contigo.astro";
+import Experiencia from "../components/sections/Experiencia.astro";
+import Stats from "../components/sections/Stats.astro";
+import Biografia from "../components/sections/Biografia.astro";
+import Galeria from "../components/sections/Galeria.astro";
+import Blog from "../components/sections/Blog.astro";
+import CTA from "../components/sections/CTA.astro";
+import Contacto from "../components/sections/Contacto.astro";
+import HeroLaptop from "../components/sections/laptop/HeroLaptop.astro";
+import AboutLaptop from "../components/sections/laptop/AboutLaptop.astro";
+import ContigoLaptop from "../components/sections/laptop/ContigoLaptop.astro";
+import ExperienciaLaptop from "../components/sections/laptop/ExperienciaLaptop.astro";
+import StatsLaptop from "../components/sections/laptop/StatsLaptop.astro";
+import BiografiaLaptop from "../components/sections/laptop/BiografiaLaptop.astro";
+import GaleriaLaptop from "../components/sections/laptop/GaleriaLaptop.astro";
+import BlogLaptop from "../components/sections/laptop/BlogLaptop.astro";
+import CTALaptop from "../components/sections/laptop/CTALaptop.astro";
+import ContactoLaptop from "../components/sections/laptop/ContactoLaptop.astro";
+import HeroMobile from "../components/sections/mobile/HeroMobile.astro";
+import AboutMobile from "../components/sections/mobile/AboutMobile.astro";
+import ContigoMobile from "../components/sections/mobile/ContigoMobile.astro";
+import ExperienciaMobile from "../components/sections/mobile/ExperienciaMobile.astro";
+import StatsMobile from "../components/sections/mobile/StatsMobile.astro";
+import GaleriaMobile from "../components/sections/mobile/GaleriaMobile.astro";
+import BlogMobile from "../components/sections/mobile/BlogMobile.astro";
+import CTAMobile from "../components/sections/mobile/CTAMobile.astro";
+import ContactoMobile from "../components/sections/mobile/ContactoMobile.astro";
+---
+
+<Layout
+  title="Sosi Aspilcueta — Teniente Alcaldesa de Mejía, Arequipa"
+  description="Sosi Aspilcueta, Teniente Alcaldesa de Mejía. Compromiso y experiencia para transformar Mejía."
+>
+  <!-- Desktop version (>= 1366px) -->
+  <div class="desktop-only">
+    <Header />
+    <main>
+      <Hero />
+      <About />
+      <Contigo />
+      <Experiencia />
+      <Stats />
+      <Biografia />
+      <Galeria />
+      <Blog />
+      <CTA />
+      <Contacto />
+    </main>
+  </div>
+
+  <!-- Laptop version (<= 1366px, > 430px) -->
+  <div class="laptop-only">
+    <HeaderLaptop />
+    <main>
+      <HeroLaptop />
+      <AboutLaptop />
+      <ContigoLaptop />
+      <ExperienciaLaptop />
+      <StatsLaptop />
+      <BiografiaLaptop />
+      <GaleriaLaptop />
+      <BlogLaptop />
+      <CTALaptop />
+      <ContactoLaptop />
+    </main>
+  </div>
+
+  <!-- Mobile version (<= 430px) -->
+  <div class="mobile-only">
+    <HeaderMobile />
+    <main>
+      <HeroMobile />
+      <AboutMobile />
+      <ContigoMobile />
+      <ExperienciaMobile />
+      <StatsMobile />
+      <GaleriaMobile />
+      <BlogMobile />
+      <CTAMobile />
+      <ContactoMobile />
+    </main>
+  </div>
+</Layout>

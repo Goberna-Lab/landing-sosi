@@ -1,0 +1,158 @@
+@import "tailwindcss/utilities" layer(utilities);
+@import "tailwindcss/theme" layer(theme);
+
+@theme {
+  --color-red: #D70202;
+  --color-red-dark: #B30202;
+  --color-red-darker: #980202;
+  --color-red-deep: #6C0101;
+  --color-black: #121822;
+  --color-white: #FFF;
+  --color-gray-bg: #F5F7FA;
+  --color-gray-overlay: #F1F2F5;
+  --color-gray-border: #CECECE;
+  --color-gray-muted: #D0D4E0;
+  --color-gray-text: #888;
+  --color-gray-400: #696F7E;
+  --color-text-dark: #2E3135;
+
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.625rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.125rem;
+  --radius-pill: 4.75rem;
+
+  --shadow-card: 0 3px 6px 0 rgba(98, 109, 159, 0.16);
+  --shadow-header: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+}
+
+:root {
+  --page: 1920px;
+  --stage-scale: 1;
+}
+
+.stage {
+  width: var(--page);
+  margin-inline: auto;
+  overflow: hidden;
+  zoom: var(--stage-scale);
+}
+
+@supports not (zoom: 1) {
+  body {
+    min-width: var(--page);
+    overflow-x: auto;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+@media (min-width: 1600px) {
+  html { font-size: clamp(16px, 100vw / 120, 18px); }
+}
+
+@media (max-width: 900px) {
+  html { font-size: 14px; }
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-black);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.container-main {
+  width: 100%;
+  max-width: 95rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive visibility toggles for multi-version support */
+.desktop-only { display: block; }
+.laptop-only { display: none; }
+.mobile-only { display: none; }
+
+@media (max-width: 1366px) {
+  :root { --page: 1366px; }
+  .desktop-only { display: none; }
+  .laptop-only { display: block; }
+}
+
+@media (max-width: 430px) {
+  :root { --page: 430px; }
+  .desktop-only { display: none; }
+  .laptop-only { display: none; }
+  .mobile-only { display: block; }
+}
+
+/* Experiencia timeline: smooth year/dot transitions + slide-in on content change */
+.exp-year {
+  transition: font-size 0.35s ease, color 0.35s ease, font-weight 0.35s ease;
+}
+
+.exp-dot-red {
+  transition: opacity 0.35s ease;
+}
+
+@keyframes exp-fade-slide {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.exp-fade-slide {
+  animation: exp-fade-slide 0.45s ease;
+}
+
+/* Biografia tabs: text slides in from the right, photo slides up */
+@keyframes bio-slide-right {
+  from { opacity: 0; transform: translateX(32px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.bio-slide-right {
+  animation: bio-slide-right 0.45s ease;
+}
+
+@keyframes bio-slide-up {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.bio-slide-up {
+  animation: bio-slide-up 0.45s ease;
+}

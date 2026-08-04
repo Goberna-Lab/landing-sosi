@@ -1,0 +1,46 @@
+---
+export interface Props {
+  variant?: "primary" | "outline" | "pill";
+  href?: string;
+  as?: "a" | "button";
+  size?: "sm" | "md" | "lg";
+  class?: string;
+}
+
+const {
+  variant = "primary",
+  href = "#",
+  as = "a",
+  size = "md",
+  class: extraClass = "",
+} = Astro.props;
+
+const base = "inline-flex items-center justify-center font-body transition-colors duration-200";
+
+const variants = {
+  primary:
+    "bg-red text-white hover:bg-red-dark rounded-sm",
+  outline:
+    "border border-red text-red hover:bg-red hover:text-white rounded-pill",
+  pill:
+    "border border-red text-red hover:bg-red hover:text-white rounded-pill",
+};
+
+const sizes = {
+  sm: "text-12 h-10 px-8",
+  md: "text-14 h-12 px-10",
+  lg: "text-18 h-16 px-20",
+};
+---
+
+{
+  as === "a" ? (
+    <a href={href} class={`${base} ${variants[variant]} ${sizes[size]} ${extraClass}`}>
+      <slot />
+    </a>
+  ) : (
+    <button class={`${base} ${variants[variant]} ${sizes[size]} ${extraClass}`}>
+      <slot />
+    </button>
+  )
+}

@@ -1,0 +1,309 @@
+---
+export interface Props {
+  foto1?: string;
+}
+
+const {
+  foto1 = "/images/biografia-foto-1.png",
+} = Astro.props;
+---
+
+<div
+  id="biografia"
+  class="relative overflow-hidden"
+  style="width:var(--page);height:1087px;background:var(--color-gray-bg)"
+>
+  <!-- White card -->
+  <div
+    class="absolute rounded-b-[0.625rem]"
+    style="
+      left:10.42%;
+      top:34.68%;
+      width:79.17%;
+      height:56.12%;
+      background:#fff;
+      box-shadow:2px 10px 16px 0 rgba(196,196,196,0.8);
+    "
+  ></div>
+
+  <!-- Title: La historia detrás -->
+  <p
+    class="absolute z-[2]"
+    style="
+      left:10.42%;
+      top:10.40%;
+      font-family:var(--font-heading);
+      font-weight:800;
+      font-size:clamp(2rem,3.91vw,4.6875rem);
+      color:var(--color-black);
+      letter-spacing:-0.1172vw;
+      line-height:1;
+      margin:0;
+    "
+  >
+    La historia detrás
+  </p>
+
+  <!-- Title: del compromiso -->
+  <p
+    class="absolute z-[2]"
+    style="
+      left:10.42%;
+      top:16.74%;
+      font-family:var(--font-heading);
+      font-weight:400;
+      font-size:clamp(1.75rem,3.39vw,4.0625rem);
+      color:var(--color-red);
+      line-height:1.02;
+      margin:0;
+    "
+  >
+    del compromiso
+  </p>
+
+  <!-- Tab 1: Mis raíces (active) -->
+  <div
+    class="absolute z-[3] rounded-t-[0.5rem] flex items-center justify-center cursor-pointer tab-btn active"
+    style="
+      left:21.41%;
+      top:29.44%;
+      width:18.39%;
+      height:5.15%;
+      background:var(--color-red);
+    "
+  >
+    <span
+      style="
+        font-family:var(--font-heading);
+        font-weight:600;
+        font-size:clamp(0.75rem,0.83vw,1rem);
+        color:#fff;
+        text-transform:uppercase;
+      "
+    >
+      Mis raíces
+    </span>
+  </div>
+
+  <!-- Tab 2: Mi formación -->
+  <div
+    class="absolute z-[3] rounded-t-[0.5rem] flex items-center justify-center cursor-pointer tab-btn"
+    style="
+      left:39.79%;
+      top:29.44%;
+      width:18.39%;
+      height:5.15%;
+      background:transparent;
+    "
+  >
+    <span
+      style="
+        font-family:var(--font-heading);
+        font-weight:600;
+        font-size:clamp(0.75rem,0.83vw,1rem);
+        color:var(--color-black);
+        text-transform:uppercase;
+      "
+    >
+      Mi formación
+    </span>
+  </div>
+
+  <!-- Tab 3: Mi experiencia -->
+  <div
+    class="absolute z-[3] rounded-t-[0.5rem] flex items-center justify-center cursor-pointer tab-btn"
+    style="
+      left:58.18%;
+      top:29.44%;
+      width:18.39%;
+      height:5.15%;
+      background:transparent;
+    "
+  >
+    <span
+      style="
+        font-family:var(--font-heading);
+        font-weight:600;
+        font-size:clamp(0.75rem,0.83vw,1rem);
+        color:var(--color-black);
+        text-transform:uppercase;
+      "
+    >
+      Mi experiencia
+    </span>
+  </div>
+
+  <!-- Red line under tabs -->
+  <div
+    class="absolute z-[3]"
+    style="
+      left:10.44%;
+      top:34.63%;
+      width:79.17%;
+      height:1px;
+      background:var(--color-red);
+    "
+  ></div>
+
+  <!-- Content: Mis raíces -->
+  <div id="bio-content-0" class="absolute inset-0 z-[2] bio-slide-right" style="display:block">
+    <p
+      class="absolute z-[2]"
+      style="
+        left:13.33%;
+        top:52.90%;
+        max-width:28.13%;
+        font-family:var(--font-heading);
+        font-weight:700;
+        font-size:clamp(1.25rem,1.46vw,1.75rem);
+        color:var(--color-black);
+        line-height:1.875vw;
+        margin:0;
+      "
+    >
+      Nací el 20 de enero de 1986 en Mejía, distrito de mi amada Arequipa.
+    </p>
+
+    <p
+      class="absolute z-[2]"
+      style="
+        left:13.33%;
+        top:61.18%;
+        max-width:30.31%;
+        font-family:var(--font-body);
+        font-weight:400;
+        font-size:clamp(0.875rem,0.89vw,1.0625rem);
+        color:var(--color-black);
+        line-height:1.667vw;
+        margin:0;
+      "
+    >
+      Desde temprana edad, fui encaminada por la educación y el servicio a la comunidad, lo que me ha permitido construir una sólida trayectoria académica y profesional.<br/><br/>Soy una mujer decidida a lograr mis objetivos en bienestar de mi comunidad.
+    </p>
+  </div>
+
+  <!-- Content: Mi formación -->
+  <div id="bio-content-1" class="absolute inset-0 z-[2] bio-slide-right" style="display:none">
+    <p
+      class="absolute z-[2]"
+      style="left:13.33%;top:41.95%;max-width:28.13%;font-family:var(--font-heading);font-weight:700;font-size:clamp(1.25rem,1.46vw,1.75rem);color:var(--color-black);line-height:1.875vw;margin:0"
+    >
+      Preparación que impulsa<br/>mi propósito
+    </p>
+
+    <div class="absolute z-[2]" style="left:13.33%;top:51.06%;width:1.72%"><img src="/images/icons/icon-cetpro.svg" alt="" class="w-full h-auto" /></div>
+    <p class="absolute z-[2]" style="left:15.52%;top:50.41%;max-width:19.01%;font-family:var(--font-body);font-size:clamp(0.8125rem,0.83vw,1rem);color:var(--color-black);line-height:1.4;margin:0">
+      CETPRO George Washington, donde me especialicé en Computación e Informática
+    </p>
+
+    <div class="absolute z-[2]" style="left:13.39%;top:58.42%;width:1.67%"><img src="/images/icons/icon-universidad.svg" alt="" class="w-full h-auto" /></div>
+    <p class="absolute z-[2]" style="left:15.52%;top:57.31%;max-width:24.11%;font-family:var(--font-body);font-size:clamp(0.8125rem,0.83vw,1rem);color:var(--color-black);line-height:1.4;margin:0">
+      Universidad Nacional de San Agustín de Arequipa, donde obtuve mi título en Ingeniería Pesquera en 2009.
+    </p>
+
+    <div class="absolute z-[2]" style="left:13.33%;top:65.41%;width:1.72%"><img src="/images/icons/noun_Diploma_1218634.svg" alt="" class="w-full h-auto" /></div>
+    <p class="absolute z-[2]" style="left:15.52%;top:64.31%;max-width:26.04%;font-family:var(--font-body);font-size:clamp(0.8125rem,0.83vw,1rem);color:var(--color-black);line-height:1.4;margin:0">
+      Maestría en Ciencias de Administración con mención en Gerencia del Estado y Administración Pública.
+    </p>
+
+    <p class="absolute z-[2]" style="left:13.39%;top:72.49%;max-width:33.28%;font-family:var(--font-body);font-weight:400;font-size:clamp(0.875rem,0.89vw,1.0625rem);color:var(--color-black);line-height:1.667vw;margin:0">
+      Mi formación en ingeniería pesquera me ha brindado una perspectiva valiosa sobre la sostenibilidad y el desarrollo económico de las regiones costeras; asimismo, mi constante interés por la actualización académica ha reforzado mis habilidades para el desarrollo de proyectos y la gestión pública.
+    </p>
+  </div>
+
+  <!-- Content: Mi experiencia -->
+  <div id="bio-content-2" class="absolute inset-0 z-[2] bio-slide-right" style="display:none">
+    <p
+      class="absolute z-[2]"
+      style="left:13.33%;top:42.69%;max-width:28.13%;font-family:var(--font-heading);font-weight:700;font-size:clamp(1.25rem,1.46vw,1.75rem);color:var(--color-black);line-height:1.875vw;margin:0"
+    >
+      Mi experiencia y liderazgo
+    </p>
+
+    <p class="absolute z-[2]" style="left:13.33%;top:47.66%;max-width:30.31%;font-family:var(--font-body);font-weight:400;font-size:clamp(0.875rem,0.89vw,1.0625rem);color:var(--color-black);line-height:1.667vw;margin:0">
+      He tenido el honor de desempeñarme como Alcaldesa de Mejía, aplicando mi formación y experiencia para liderar proyectos innovadores y sostenibles que generan bienestar para nuestra comunidad.
+    </p>
+
+    <div class="absolute z-[2]" style="left:13.52%;top:58.79%;width:1.55%"><img src="/images/icons/noun_dense_2855562.svg" alt="" class="w-full h-auto" /></div>
+    <p class="absolute z-[2]" style="left:15.81%;top:59.08%;font-family:var(--font-body);font-size:clamp(0.8125rem,0.83vw,1rem);color:var(--color-black);margin:0">Gestión Pública con trasparencia</p>
+
+    <div class="absolute z-[2]" style="left:13.41%;top:64.16%;width:1.77%"><img src="/images/icons/noun_money_in_hand_3606493.svg" alt="" class="w-full h-auto" /></div>
+    <p class="absolute z-[2]" style="left:15.81%;top:64.32%;font-family:var(--font-body);font-size:clamp(0.8125rem,0.83vw,1rem);color:var(--color-black);margin:0">Desarrollo sostenible</p>
+
+    <div class="absolute z-[2]" style="left:13.62%;top:69.42%;width:1.40%"><img src="/images/icons/noun_support_1156576.svg" alt="" class="w-full h-auto" /></div>
+    <p class="absolute z-[2]" style="left:15.81%;top:69.47%;font-family:var(--font-body);font-size:clamp(0.8125rem,0.83vw,1rem);color:var(--color-black);margin:0">Innovación y tecnología</p>
+
+    <div class="absolute z-[2]" style="left:13.57%;top:74.59%;width:1.49%"><img src="/images/icons/noun_Business_2603804.svg" alt="" class="w-full h-auto" /></div>
+    <p class="absolute z-[2]" style="left:15.81%;top:74.72%;font-family:var(--font-body);font-size:clamp(0.8125rem,0.83vw,1rem);color:var(--color-black);margin:0">Compromiso social</p>
+  </div>
+
+  <!-- Masked photo group -->
+  <div
+    id="bio-photo"
+    class="absolute z-[1] overflow-hidden bio-slide-up"
+    style="
+      left:51.72%;
+      top:43.24%;
+      width:33.70%;
+      height:41.40%;
+      border-radius:0.625rem;
+    "
+  >
+    <img
+      src={foto1}
+      alt=""
+      class="absolute object-cover"
+      style="
+        width:100%;
+        height:auto;
+        top:-15.56%;
+        left:0;
+        min-height:143.78%;
+      "
+    />
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const section = document.getElementById('biografia');
+    if (!section) return;
+
+    const tabs = section.querySelectorAll('.tab-btn') as NodeListOf<HTMLElement>;
+    const contents = [
+      document.getElementById('bio-content-0'),
+      document.getElementById('bio-content-1'),
+      document.getElementById('bio-content-2'),
+    ];
+    const photo = document.getElementById('bio-photo');
+
+    function replay(el: HTMLElement | null, className: string) {
+      if (!el) return;
+      el.classList.remove(className);
+      void el.offsetWidth;
+      el.classList.add(className);
+    }
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach((t) => {
+          t.classList.remove('active');
+          t.style.background = 'transparent';
+          const span = t.querySelector('span');
+          if (span) span.style.color = 'var(--color-black)';
+        });
+
+        tab.classList.add('active');
+        tab.style.background = 'var(--color-red)';
+        const activeSpan = tab.querySelector('span');
+        if (activeSpan) activeSpan.style.color = '#fff';
+
+        contents.forEach((content, i) => {
+          if (content) content.style.display = i === index ? 'block' : 'none';
+        });
+
+        replay(photo, 'bio-slide-up');
+      });
+    });
+  });
+</script>

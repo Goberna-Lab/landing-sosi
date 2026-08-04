@@ -1,0 +1,82 @@
+---
+const bgImage = "/images/immersive.png";
+---
+
+<div id="stats" class="relative overflow-hidden" style="width:var(--page);height:872px">
+
+  <div class="absolute inset-0 z-0">
+    <img src={bgImage} alt="" class="w-full h-full object-cover" />
+  </div>
+
+  <div class="absolute inset-0 z-[1]" style="background:rgba(18,24,34,0.64)"></div>
+
+  <!-- Title -->
+  <div class="absolute z-[2]" style="left:10.42%;top:18.92%">
+    <span style="font-family:var(--font-heading);font-weight:800;font-size:4.6875rem;color:#fff;line-height:5.75rem;letter-spacing:-0.144rem">La experiencia </span>
+  </div>
+  <div class="absolute z-[2]" style="left:10.42%;top:27.87%">
+    <span style="font-family:var(--font-heading);font-weight:400;font-size:4.0625rem;color:#fff;line-height:5.6875rem">también se mide</span>
+  </div>
+
+  <!-- 15 -->
+  <p class="absolute z-[2] stat-number" data-count-to="15" style="left:15.05%;top:55.96%;font-family:var(--font-heading);font-weight:800;font-size:7rem;color:#fff;line-height:1;letter-spacing:-0.03em">0</p>
+  <p class="absolute z-[2]" style="left:20.83%;top:55.96%;font-family:var(--font-heading);font-weight:600;font-size:6.6875rem;color:#d70202;line-height:1">+</p>
+
+  <!-- 90 -->
+  <p class="absolute z-[2] stat-number" data-count-to="90" style="left:66.77%;top:55.96%;font-family:var(--font-heading);font-weight:800;font-size:7rem;color:#fff;line-height:1;letter-spacing:-0.03em">0</p>
+  <p class="absolute z-[2]" style="left:74.38%;top:56.65%;font-family:var(--font-heading);font-weight:800;font-size:5.5625rem;color:#d70202;line-height:5.75rem">%</p>
+
+  <!-- 10 -->
+  <p class="absolute z-[2] stat-number" data-count-to="10" style="left:40.47%;top:55.96%;font-family:var(--font-heading);font-weight:800;font-size:7rem;color:#fff;line-height:1;letter-spacing:-0.03em">0</p>
+
+  <!-- Labels -->
+  <div class="absolute z-[2]" style="left:15.21%;top:68.58%">
+    <p style="font-family:var(--font-heading);font-weight:400;font-size:1.5rem;color:#fff;line-height:2.438rem;margin:0">Años de experiencia</p>
+    <p style="font-family:var(--font-heading);font-weight:400;font-size:1.5rem;color:#fff;line-height:2.438rem;margin:0">pública</p>
+  </div>
+
+  <div class="absolute z-[2]" style="left:66.2%;top:68.58%">
+    <p style="font-family:var(--font-heading);font-weight:400;font-size:1.5rem;color:#fff;line-height:2.438rem;margin:0">Ejecución presupuestal</p>
+    <p style="font-family:var(--font-heading);font-weight:400;font-size:1.5rem;color:#fff;line-height:2.438rem;margin:0">promedio</p>
+  </div>
+
+  <div class="absolute z-[2]" style="left:39.74%;top:68.58%">
+    <p style="font-family:var(--font-heading);font-weight:400;font-size:1.5rem;color:#fff;line-height:2.438rem;margin:0">Cargos en el Gobierno</p>
+    <p style="font-family:var(--font-heading);font-weight:400;font-size:1.5rem;color:#fff;line-height:2.438rem;margin:0">Regional</p>
+  </div>
+
+</div>
+
+<script>
+  function animateCount(el, target, duration = 1500) {
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = String(Math.round(eased * target));
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const statsSection = document.getElementById("stats");
+  const statNumbers = statsSection?.querySelectorAll(".stat-number");
+
+  if (statsSection && statNumbers && statNumbers.length) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            statNumbers.forEach((el) => {
+              const target = Number(el.getAttribute("data-count-to"));
+              animateCount(el, target);
+            });
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(statsSection);
+  }
+</script>

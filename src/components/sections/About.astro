@@ -1,0 +1,57 @@
+---
+export interface Props {
+  aboutPhoto?: string;
+  mainPhoto?: string;
+}
+
+const {
+  aboutPhoto = "/images/about-photo.png",
+  mainPhoto = "/images/sosi-v4.png",
+} = Astro.props;
+---
+
+<div id="sobre-mi" class="relative overflow-hidden bg-white" style="width:var(--page);height:873px">
+
+  <div class="absolute top-0 bg-white z-[2]" style="left:49.9%;width:50.1%;height:100%"></div>
+
+  <div class="absolute top-0 left-0 z-[1] overflow-hidden" style="width:50.05%;height:100%">
+    <img src={aboutPhoto} alt="" class="absolute top-0 object-cover" style="left:-4.83%;width:169.9%;height:100%" />
+  </div>
+
+  <div class="absolute z-[3]" style="left:16.35%;top:11.23%;width:30.31%">
+    <img src={mainPhoto} alt="Sosi Aspilcueta" class="w-full h-auto block" />
+  </div>
+
+  <div class="absolute z-[4] flex flex-col items-start" style="left:14.28%;top:33.22%">
+    <img src="/images/icons/pin.svg" alt="" style="width:1.64rem;height:2.13rem" />
+    <span style="font-family:var(--font-heading);font-weight:700;color:#d70202;line-height:2.063rem;font-size:1.9375rem">MEJÍA</span>
+    <span style="font-family:var(--font-heading);font-weight:400;color:#121822;line-height:1.875rem;font-size:1.0625rem">AREQUIPA</span>
+  </div>
+
+  <p class="absolute z-[5] text-black leading-8" style="left:59.37%;top:48.03%;max-width:32.7%;font-family:var(--font-body);font-size:1.375rem">
+    <span style="color:#d70202">Soy Sosi Aspilcueta, </span>
+    <span>nací el 20 de enero de 1986 en Mejía,<br />
+    un encantador distrito ubicado en Arequipa, Perú.</span>
+    <br /><br />
+    Estoy comprometida por un Mejía que en base a la<br />
+    experiencia y compromiso, busque transformar la vida de<br />
+    sus ciudadanos.
+  </p>
+
+  <a href="#trayectoria" class="absolute z-[5] inline-flex items-center justify-center text-white rounded-sm" style="left:55.45%;top:75.83%;width:14.64%;height:7.33%;background:#d70202;font-family:var(--font-body);font-size:1.125rem">
+    CONOCE MI HISTORIA
+  </a>
+
+  <div class="absolute z-[3]" style="left:54.84%;top:16.31%;width:22.14%">
+    <img src="/images/icons/s-shape.svg" alt="" class="w-full h-auto" />
+  </div>
+
+  <div class="absolute z-[3]" style="left:54.84%;top:48.85%;width:4.08%">
+    <img src="/images/icons/border-shape.svg" alt="" class="w-full h-auto" />
+  </div>
+
+  <div class="absolute z-[3]" style="left:55.45%;top:61.01%;width:2.95%">
+    <img src="/images/icons/solidarity.svg" alt="" class="w-full h-auto" />
+  </div>
+
+</div>

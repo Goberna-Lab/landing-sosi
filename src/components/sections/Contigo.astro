@@ -1,0 +1,29 @@
+---
+export interface Props {
+  bgImage?: string;
+}
+
+const { bgImage = "/images/contigo-bg.png" } = Astro.props;
+---
+
+<div id="contigo" class="relative overflow-hidden" style="width:var(--page);height:871px">
+
+  <div class="absolute inset-0 z-0">
+    <img src={bgImage} alt="" class="w-full h-full object-cover" />
+  </div>
+
+  <div class="absolute inset-0 z-[1]" style="background:#f1f2f5;opacity:0.44"></div>
+
+  <!-- Line 1 -->
+  <div class="absolute z-[2] flex items-baseline whitespace-nowrap" style="left:10.42%;top:39.38%">
+    <span style="font-family:var(--font-heading);font-weight:800;color:#121822;font-size:4.8125rem;line-height:5.75rem;letter-spacing:-0.144rem">Contigo</span>
+    <span style="font-family:var(--font-heading);font-weight:500;font-style:italic;color:#121822;font-size:4.8125rem;line-height:5.75rem;margin-left:1.5rem">ahora</span>
+  </div>
+
+  <!-- Line 2 -->
+  <div class="absolute z-[2] flex items-baseline whitespace-nowrap" style="left:10.42%;top:50.17%">
+    <span style="font-family:var(--font-heading);font-weight:800;color:#121822;font-size:4.8125rem;line-height:5.75rem;letter-spacing:-0.144rem">Contigo</span>
+    <span style="font-family:var(--font-heading);font-weight:800;color:#d70202;font-size:4.8125rem;line-height:5.75rem;margin-left:1.5rem">siempre.</span>
+  </div>
+
+</div>

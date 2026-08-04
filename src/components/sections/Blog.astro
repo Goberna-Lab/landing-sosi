@@ -1,0 +1,237 @@
+---
+export interface Props {
+  mainImage?: string;
+  article1Image?: string;
+  article2Image?: string;
+}
+
+const {
+  mainImage = "/images/sosi-v3.png",
+  article1Image = "/images/blog-thumb-1.png",
+  article2Image = "/images/blog-thumb-2.png",
+} = Astro.props;
+---
+
+<div
+  class="relative overflow-hidden"
+  style="width:var(--page);height:845px;background:var(--color-gray-bg)"
+>
+  <!-- Title -->
+  <p
+    class="absolute z-[2] m-0"
+    style="
+      left:10.42%;
+      top:13.37%;
+      font-size:clamp(2rem,3.91vw,4.6875rem);
+      line-height:1;
+    "
+  >
+    <span style="font-family:var(--font-heading);font-weight:800;color:var(--color-black);letter-spacing:-0.1172vw;">Ideas </span>
+    <span style="font-family:var(--font-heading);font-weight:400;color:var(--color-red);">en voz alta</span>
+  </p>
+
+  <!-- Pill: Ver todo -->
+  <a
+    href="#"
+    class="absolute z-[5] flex items-center justify-center rounded-[76px] no-underline uppercase"
+    style="
+      left:73.28%;
+      top:14.91%;
+      width:8.11%;
+      height:4.73%;
+      border:1px solid var(--color-red);
+      font-family:var(--font-body);
+      font-weight:400;
+      font-size:clamp(0.6875rem,0.625vw,0.75rem);
+      color:var(--color-red);
+    "
+  >
+    Ver todo
+  </a>
+
+  <!-- Main card -->
+  <div
+    class="absolute z-[1] overflow-hidden rounded-[10px]"
+    style="left:10.42%;top:28.64%;width:35.05%;height:60.24%;background:#000;"
+  >
+    <!-- Background -->
+    <img src="/images/blog-featured-bg.png" alt="" class="absolute inset-0 w-full h-full object-cover" />
+
+    <!-- Sosi photo centered -->
+    <img src={mainImage} alt="Sosi Aspilcueta" class="absolute w-[78%] h-auto top-0 left-1/2 -translate-x-1/2" />
+
+    <!-- Bottom gradient overlay -->
+    <div
+      class="absolute rounded-b-[10px]"
+      style="
+        left:0;
+        bottom:0;
+        width:100%;
+        height:25.34%;
+        background:linear-gradient(180deg,rgba(18,24,34,0) 0%,#121822 100%);
+        z-index:1;
+      "
+    ></div>
+
+    <!-- Conoce más sobre mí -->
+    <p
+      class="absolute z-[2] m-0"
+      style="
+        left:5.12%;
+        bottom:12.29%;
+        font-family:var(--font-heading);
+        font-weight:500;
+        font-size:clamp(1.25rem,1.30vw,1.5625rem);
+        color:var(--color-white);
+        line-height:2.1875rem;
+      "
+    >
+      Conoce más sobre mí
+    </p>
+
+    <!-- Leer artículo (main card) -->
+    <a
+      href="#"
+      class="absolute z-[2] no-underline"
+      style="
+        left:73.70%;
+        top:83.89%;
+        font-family:var(--font-heading);
+        font-weight:500;
+        font-size:clamp(0.875rem,1.04vw,1.25rem);
+        color:var(--color-red);
+        line-height:1;
+      "
+    >
+      Leer artículo
+    </a>
+  </div>
+
+  <!-- Article 1 thumbnail -->
+  <div
+    class="absolute z-[1] overflow-hidden rounded-[10px]"
+    style="left:47.40%;top:28.64%;width:11.93%;height:27.10%;"
+  >
+    <img
+      src={article1Image}
+      alt=""
+      class="w-full h-full object-cover"
+    />
+  </div>
+
+  <!-- Article 1 title -->
+  <p
+    class="absolute z-[2] m-0"
+    style="
+      left:60.78%;
+      top:29.11%;
+      max-width:20.63%;
+      font-family:var(--font-heading);
+      font-weight:500;
+      font-size:clamp(0.875rem,1.04vw,1.25rem);
+      color:var(--color-black);
+      line-height:1.5rem;
+    "
+  >
+    <span style="font-weight:700;">El potencial pesquero de Islay:</span>
+    <span style="font-weight:500;"> Propuestas para fortalecer la economía artesanal</span>
+  </p>
+
+  <!-- Article 1 description -->
+  <p
+    class="absolute z-[2] m-0"
+    style="
+      left:60.78%;
+      top:39.76%;
+      max-width:20.63%;
+      font-family:var(--font-body);
+      font-weight:400;
+      font-size:clamp(0.75rem,0.83vw,1rem);
+      color:var(--color-black);
+      line-height:1.5rem;
+    "
+  >
+    La provincia de Islay alberga uno de los litorales más ricos y productivos del sur del Perú.
+  </p>
+
+  <!-- Article 1 "Leer artículo" -->
+  <a
+    href="#"
+    class="absolute z-[2] no-underline"
+    style="
+      left:60.78%;
+      top:49.70%;
+      font-family:var(--font-heading);
+      font-weight:500;
+      font-size:clamp(0.875rem,1.04vw,1.25rem);
+      color:var(--color-red);
+      line-height:1;
+    "
+  >
+    Leer artículo
+  </a>
+
+  <!-- Article 2 thumbnail -->
+  <div
+    class="absolute z-[1] overflow-hidden rounded-[10px]"
+    style="left:47.40%;top:61.78%;width:11.93%;height:27.10%;"
+  >
+    <img
+      src={article2Image}
+      alt=""
+      class="w-full h-full object-cover"
+    />
+  </div>
+
+  <!-- Article 2 title -->
+  <p
+    class="absolute z-[2] m-0"
+    style="
+      left:60.78%;
+      top:61.78%;
+      max-width:20.63%;
+      font-family:var(--font-heading);
+      font-weight:500;
+      font-size:clamp(0.875rem,1.04vw,1.25rem);
+      color:var(--color-black);
+      line-height:1.5rem;
+    "
+  >
+    <span style="font-weight:700;">Caminos seguros:</span>
+    <span style="font-weight:500;"> para quienes van a la escuela</span>
+  </p>
+
+  <!-- Article 2 description -->
+  <p
+    class="absolute z-[2] m-0"
+    style="
+      left:60.78%;
+      top:71.24%;
+      max-width:20.63%;
+      font-family:var(--font-body);
+      font-weight:400;
+      font-size:clamp(0.75rem,0.83vw,1rem);
+      color:var(--color-black);
+      line-height:1.5rem;
+    "
+  >
+    Movilidad, alumbrado y espacios públicos: tres decisiones simples que cambian la vida diaria.
+  </p>
+
+  <!-- Article 2 "Leer artículo" -->
+  <a
+    href="#"
+    class="absolute z-[2] no-underline"
+    style="
+      left:60.78%;
+      top:82.37%;
+      font-family:var(--font-heading);
+      font-weight:500;
+      font-size:clamp(0.875rem,1.04vw,1.25rem);
+      color:var(--color-red);
+      line-height:1;
+    "
+  >
+    Leer artículo
+  </a>
+</div>

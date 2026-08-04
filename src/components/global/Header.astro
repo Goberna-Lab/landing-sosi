@@ -1,0 +1,29 @@
+---
+const navItems = [
+  { label: "SOBRE MI", href: "#sobre-mi" },
+  { label: "TRAYECTORIA", href: "#trayectoria" },
+  { label: "BIOGRAFÍA", href: "#biografia" },
+  { label: "GALERÍA", href: "#galeria" },
+  { label: "BLOG", href: "#blog" },
+  { label: "CONTACTO", href: "#contacto" },
+];
+---
+
+<header class="sticky top-0 bg-white flex items-center z-[100]" style="width:var(--page);height:6.25rem;box-shadow:0_3px_6px_0_rgba(0,0,0,0.16)">
+  <div class="container-main flex items-center justify-between">
+    <a href="/" aria-label="SOSI — Ir al inicio" class="flex-shrink-0 leading-none">
+      <img src="/images/logo.svg" alt="SOSI" width="167" height="60" class="h-[3.75rem] w-auto" loading="eager" decoding="sync" />
+    </a>
+    <nav aria-label="Navegación principal">
+      <ul class="flex" style="gap:2rem">
+        {navItems.map((item) => (
+          <li>
+            <a href={item.href} class="text-red hover:text-red-dark transition-colors duration-150 whitespace-nowrap" style="font-family:var(--font-body);font-size:0.9375rem;color:#2E3135;line-height:2.3125rem">
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,20 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="56.9997" height="57" viewBox="0 0 56.9997 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Grupo 16925">
+<g id="Trazado 20681" filter="url(#filter0_d_0_87)">
+<path d="M28.4998 48C16.0735 48 6 37.9265 6 25.5002C6 13.0738 16.0735 3 28.4998 3C40.9262 3 50.9997 13.0738 50.9997 25.5002C50.986 37.9207 40.9204 47.9863 28.4998 48Z" fill="white"/>
+</g>
+<path id="Trazado 20682" d="M35.415 25.5151C35.415 26.0133 35.0112 26.4171 34.5131 26.4171H24.6654L27.9349 29.6881C28.2993 30.0278 28.3195 30.5985 27.98 30.9628C27.6403 31.3272 27.0697 31.3474 26.7053 31.0079C26.6897 30.9935 26.6746 30.9785 26.6602 30.9628L21.8499 26.1525C21.4981 25.8005 21.4981 25.2298 21.8499 24.8778L26.6602 20.0675C27.0246 19.7277 27.5952 19.7482 27.9349 20.1125C28.2578 20.4589 28.2578 20.9958 27.9349 21.3422L24.6654 24.6132H34.5131C35.0112 24.6132 35.415 25.017 35.415 25.5151Z" fill="#454A50"/>
+</g>
+<defs>
+<filter id="filter0_d_0_87" x="0" y="0" width="56.9997" height="57" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="3"/>
+<feGaussianBlur stdDeviation="3"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.160784 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_87"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_87" result="shape"/>
+</filter>
+</defs>
+</svg>

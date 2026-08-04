@@ -1,0 +1,48 @@
+---
+const pageW = 1366;
+---
+
+<div style="position: relative; width: 1366px; height: 620px; overflow: hidden;">
+  <!-- Beach background -->
+  <div style="position: absolute; inset: 0; overflow: hidden;">
+    <img src="/images/laptop/playa.jpg" alt="" style="width: 100%; height: auto; min-height: 911px; object-fit: cover;" />
+  </div>
+  <!-- Gray overlay -->
+  <div style="position: absolute; inset: 0; background: #f1f2f5; opacity: 0.44;"></div>
+  <!-- Noise texture -->
+  <div style="position: absolute; inset: 0; -webkit-mask-image: url('/images/laptop/fondo-ruido.png'); mask-image: url('/images/laptop/fondo-ruido.png'); -webkit-mask-size: 1366px 620px; mask-size: 1366px 620px;">
+    <img src="/images/laptop/fondo-ruido.png" alt="" style="width: 100%; height: 100%; object-fit: cover;" />
+  </div>
+  <!-- Dark multiply overlay -->
+  <div style="position: absolute; top: 0; bottom: 0; left: 0; width: 928px; background: linear-gradient(270.7deg, rgba(0,0,0,0) 9.03%, #696F7E 96.73%); mix-blend-mode: multiply;"></div>
+
+  <!-- Tagline -->
+  <p style="position: absolute; left: 100px; top: 77px; font-size: 16px; font-weight: 400; color: #fff; text-transform: uppercase; white-space: nowrap; margin: 0;">
+    Teniente Alcaldesa · Mejía, Arequipa
+  </p>
+
+  <!-- Name -->
+  <p style="position: absolute; left: 100px; top: 190px; font-size: 64px; font-weight: 800; color: #fff; white-space: nowrap; margin: 0; font-family: var(--font-heading); line-height: 1;">
+    Sosi Aspilcueta
+  </p>
+
+  <!-- Slogan -->
+  <p style="position: absolute; left: 100px; top: 250px; font-size: 34px; font-weight: 800; color: #fff; white-space: nowrap; margin: 0; font-family: var(--font-heading); line-height: 1;">
+    Siempre al servicio de Mejía
+  </p>
+
+  <!-- Description -->
+  <div style="position: absolute; left: 100px; top: 364px; font-size: 16px; font-weight: 400; color: #fff; line-height: 22px; width: 489px; letter-spacing: 0.04em; margin: 0;">
+    Compromiso y experiencia.<br/>Transformemos juntos Mejía, con experiencia y compromiso.
+  </div>
+
+  <!-- CTA Button -->
+  <a href="#sobre-mi" style="position: absolute; left: 100px; top: 432px; display: flex; align-items: center; justify-content: center; width: 200px; height: 48px; background: #d70202; border-radius: 6px; font-size: 14px; color: #fff; text-decoration: none;">
+    CONOCE MI HISTORIA
+  </a>
+
+  <!-- Photo -->
+  <div style="position: absolute; left: 651px; top: 66px; width: 635px; height: 554px; overflow: hidden;">
+    <img src="/images/laptop/sosi-cutout.png" alt="Sosi Aspilcueta" style="position: absolute; inset: 0; width: 100%; height: auto; object-fit: cover; object-position: top;" />
+  </div>
+</div>
