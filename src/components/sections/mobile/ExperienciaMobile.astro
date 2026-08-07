@@ -1,7 +1,7 @@
 ---
 ---
 
-<div style="position: relative; width: 430px; height: 1189px; background: #f5f7fa;">
+<div style="position: relative; width: 430px; min-height: 1189px; background: #f5f7fa;">
   <!-- Title -->
   <div style="position: absolute; left: 25px; top: 52px; font-size: 32px; font-family: var(--font-heading); margin: 0;">
     <p style="font-weight: 700; color: #121822; line-height: 1; margin: 0;">La experiencia</p>
@@ -9,10 +9,10 @@
   </div>
 
   <!-- Timeline top: 2022 -->
-  <p style="position: absolute; left: 191px; top: 140px; font-size: 18px; font-weight: 700; color: #121822; white-space: nowrap; text-align: right; margin: 0; font-family: var(--font-heading);">2022</p>
+  <p class="exp-year-mobile" data-index="0" style="position: absolute; right: 236px; top: 162px; transform: translateY(-50%); font-size: 18px; font-weight: 700; color: #121822; white-space: nowrap; text-align: right; margin: 0; font-family: var(--font-heading); cursor: pointer;">2022</p>
 
   <!-- Red 2021-2022 -->
-  <p style="position: absolute; left: 191px; top: 203px; font-size: 28px; font-weight: 800; color: #d70202; white-space: nowrap; text-align: right; margin: 0; font-family: var(--font-heading);">2021-2022</p>
+  <p class="exp-year-mobile" data-index="1" style="position: absolute; right: 236px; top: 228px; transform: translateY(-50%); font-size: 28px; font-weight: 800; color: #d70202; white-space: nowrap; text-align: right; margin: 0; font-family: var(--font-heading); cursor: pointer;">2021-2022</p>
 
   <!-- Short line -->
   <div style="position: absolute; left: 215px; top: 151px; width: 1px; height: 84px; background: #cecece;"></div>
@@ -20,43 +20,152 @@
   <div style="position: absolute; left: 215px; top: 562px; width: 1px; height: 403px; background: #cecece;"></div>
 
   <!-- Dots -->
-  <img src="/images/icons/dot.svg" alt="" style="position: absolute; left: 208px; top: 155px; width: 14px; height: 14px;" />
-  <img src="/images/icons/dot-red.svg" alt="" style="position: absolute; left: 208px; top: 221px; width: 14px; height: 14px;" />
+  <img class="exp-dot-mobile" data-index="0" src="/images/icons/dot.svg" alt="" style="position: absolute; left: 208px; top: 155px; width: 14px; height: 14px; cursor: pointer;" />
+  <img class="exp-dot-mobile" data-index="1" src="/images/icons/dot-red.svg" alt="" style="position: absolute; left: 208px; top: 221px; width: 14px; height: 14px; cursor: pointer;" />
 
   <!-- Dot group (8 dots stacked) -->
-  <img src="/images/icons/dot.svg" alt="" style="position: absolute; left: 208px; top: 561px; width: 14px; height: 14px;" />
+  <img class="exp-dot-mobile" data-index="2" src="/images/icons/dot.svg" alt="" style="position: absolute; left: 208px; top: 561px; width: 14px; height: 14px; cursor: pointer;" />
+  <img class="exp-dot-mobile" data-index="3" src="/images/icons/dot.svg" alt="" style="position: absolute; left: 208px; top: 616px; width: 14px; height: 14px; cursor: pointer;" />
+  <img class="exp-dot-mobile" data-index="4" src="/images/icons/dot.svg" alt="" style="position: absolute; left: 208px; top: 671px; width: 14px; height: 14px; cursor: pointer;" />
+  <img class="exp-dot-mobile" data-index="5" src="/images/icons/dot.svg" alt="" style="position: absolute; left: 208px; top: 726px; width: 14px; height: 14px; cursor: pointer;" />
+  <img class="exp-dot-mobile" data-index="6" src="/images/icons/dot.svg" alt="" style="position: absolute; left: 208px; top: 781px; width: 14px; height: 14px; cursor: pointer;" />
+  <img class="exp-dot-mobile" data-index="7" src="/images/icons/dot.svg" alt="" style="position: absolute; left: 208px; top: 836px; width: 14px; height: 14px; cursor: pointer;" />
+  <img class="exp-dot-mobile" data-index="8" src="/images/icons/dot.svg" alt="" style="position: absolute; left: 208px; top: 891px; width: 14px; height: 14px; cursor: pointer;" />
+  <img class="exp-dot-mobile" data-index="9" src="/images/icons/dot.svg" alt="" style="position: absolute; left: 208px; top: 946px; width: 14px; height: 14px; cursor: pointer;" />
 
   <!-- Dates list -->
-  <div style="position: absolute; left: 191px; top: 541px; font-size: 18px; font-weight: 700; color: #121822; text-align: right; margin: 0; font-family: var(--font-heading);">
-    <p style="line-height: 3.05; margin: 0;">2019</p>
-    <p style="line-height: 3.05; margin: 0;">2017 -2018</p>
-    <p style="line-height: 3.05; margin: 0;">2016-2017</p>
-    <p style="line-height: 3.05; margin: 0;">2015-2016</p>
-    <p style="line-height: 3.05; margin: 0;">2013-2014</p>
-    <p style="line-height: 3.05; margin: 0;">2012-2013</p>
-    <p style="line-height: 3.05; margin: 0;">2011 -2012</p>
-    <p style="line-height: 3.05; margin: 0;">2010</p>
-  </div>
+  <p class="exp-year-mobile" data-index="2" style="position: absolute; right: 236px; top: 568px; transform: translateY(-50%); font-size: 18px; font-weight: 700; color: #121822; white-space: nowrap; text-align: right; margin: 0; font-family: var(--font-heading); cursor: pointer;">2019</p>
+  <p class="exp-year-mobile" data-index="3" style="position: absolute; right: 236px; top: 623px; transform: translateY(-50%); font-size: 18px; font-weight: 700; color: #121822; white-space: nowrap; text-align: right; margin: 0; font-family: var(--font-heading); cursor: pointer;">2017 -2018</p>
+  <p class="exp-year-mobile" data-index="4" style="position: absolute; right: 236px; top: 678px; transform: translateY(-50%); font-size: 18px; font-weight: 700; color: #121822; white-space: nowrap; text-align: right; margin: 0; font-family: var(--font-heading); cursor: pointer;">2016-2017</p>
+  <p class="exp-year-mobile" data-index="5" style="position: absolute; right: 236px; top: 733px; transform: translateY(-50%); font-size: 18px; font-weight: 700; color: #121822; white-space: nowrap; text-align: right; margin: 0; font-family: var(--font-heading); cursor: pointer;">2015-2016</p>
+  <p class="exp-year-mobile" data-index="6" style="position: absolute; right: 236px; top: 788px; transform: translateY(-50%); font-size: 18px; font-weight: 700; color: #121822; white-space: nowrap; text-align: right; margin: 0; font-family: var(--font-heading); cursor: pointer;">2013-2014</p>
+  <p class="exp-year-mobile" data-index="7" style="position: absolute; right: 236px; top: 843px; transform: translateY(-50%); font-size: 18px; font-weight: 700; color: #121822; white-space: nowrap; text-align: right; margin: 0; font-family: var(--font-heading); cursor: pointer;">2012-2013</p>
+  <p class="exp-year-mobile" data-index="8" style="position: absolute; right: 236px; top: 898px; transform: translateY(-50%); font-size: 18px; font-weight: 700; color: #121822; white-space: nowrap; text-align: right; margin: 0; font-family: var(--font-heading); cursor: pointer;">2011 -2012</p>
+  <p class="exp-year-mobile" data-index="9" style="position: absolute; right: 236px; top: 953px; transform: translateY(-50%); font-size: 18px; font-weight: 700; color: #121822; white-space: nowrap; text-align: right; margin: 0; font-family: var(--font-heading); cursor: pointer;">2010</p>
 
   <!-- Description -->
-  <p style="position: absolute; left: 25px; top: 259px; width: 381px; font-size: 15px; font-weight: 400; color: #121822; line-height: 22px; margin: 0;">Servicio especializado en INGENIERIA PESQUERA para consejo regional&ndash; Gobierno Regional de Arequipa.</p>
+  <p id="exp-description-mobile" class="exp-fade-slide" style="position: absolute; left: 25px; top: 259px; width: 381px; font-size: 15px; font-weight: 400; color: #121822; line-height: 22px; margin: 0;">Servicio especializado en INGENIERÍA PESQUERA para consejo regional &ndash; Gobierno Regional de Arequipa.</p>
 
   <!-- Main image -->
   <div style="position: absolute; left: 24px; top: 335px; width: 382px; height: 200px; border-radius: 10px; overflow: hidden;">
-    <img src="/images/mobile/experiencia-main.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;" />
+    <img id="exp-image-mobile" src="/images/mobile/experiencia-main.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;" />
+    <div id="exp-placeholder-mobile" style="display:none;position:absolute;inset:0;background:var(--color-gray-muted);opacity:0.64;"></div>
   </div>
 
-  <!-- POLÍTICA card -->
-  <div style="position: absolute; left: 24px; top: 1005px; width: 382px; height: 64px; background: #fff; border-radius: 10px; box-shadow: 0 3px 6px 0 rgba(98,109,159,0.16); display: flex; align-items: center; padding-left: 40px;">
-    <img src="/images/icons/balance.svg" alt="" style="width: 20px; height: auto; margin-right: 10px;" />
-    <span style="font-family: var(--font-heading); font-weight: 700; font-size: 17px; color: #121822;">POLÍTICA</span>
-    <img src="/images/icons/arrow-right.svg" alt="" style="position: absolute; right: 12px; width: 16px; height: auto;" />
-  </div>
+  <!-- Accordion cards (in normal flow so the section grows when expanded, instead of overlapping the next section) -->
+  <div style="height: 1005px;"></div>
+  <div style="margin-left: 24px; width: 382px; padding-bottom: 40px;">
+    <!-- POLÍTICA card -->
+    <div class="exp-accordion-card-mobile" style="background: #fff; border-radius: 10px; box-shadow: 0 3px 6px 0 rgba(98,109,159,0.16); overflow: hidden; margin-bottom: 8px;">
+      <div class="exp-accordion-toggle-mobile" data-target="exp-accordion-desc-politica-mobile" style="display: flex; align-items: center; height: 64px; padding-left: 40px; padding-right: 12px; cursor: pointer;">
+        <img src="/images/icons/balance.svg" alt="" style="width: 20px; height: auto; margin-right: 10px;" />
+        <span style="font-family: var(--font-heading); font-weight: 700; font-size: 17px; color: #121822; flex: 1;">POLÍTICA</span>
+        <img class="exp-accordion-arrow-mobile" src="/images/icons/arrow-right-card-mobile.svg" alt="" style="width: 16px; height: auto; transition: transform 0.3s ease;" />
+      </div>
+      <div id="exp-accordion-desc-politica-mobile" class="exp-accordion-desc-mobile" style="max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.35s ease, opacity 0.3s ease; padding: 0 24px 0 40px; font-size: 14px; font-weight: 400; color: #121822; line-height: 22px;">
+        <div style="padding-bottom: 20px;">Fui miembro activa en diferentes instancias en el Gobierno Regional de Arequipa y Ministerio de la Producción, lo cual me permitió ganar la experiencia necesaria para optar por el cargo de regidora de la Municipalidad Distrital de Mejía, en la provincia de Islay, departamento de Arequipa en el 2022.</div>
+      </div>
+    </div>
 
-  <!-- PERSONAL card -->
-  <div style="position: absolute; left: 24px; top: 1077px; width: 382px; height: 64px; background: #fff; border-radius: 10px; box-shadow: 0 3px 6px 0 rgba(98,109,159,0.16); display: flex; align-items: center; padding-left: 40px;">
-    <img src="/images/icons/solidarity.svg" alt="" style="width: 20px; height: auto; margin-right: 10px;" />
-    <span style="font-family: var(--font-heading); font-weight: 700; font-size: 17px; color: #121822;">PERSONAL</span>
-    <img src="/images/icons/arrow-right.svg" alt="" style="position: absolute; right: 12px; width: 16px; height: auto;" />
+    <!-- PERSONAL card -->
+    <div class="exp-accordion-card-mobile" style="background: #fff; border-radius: 10px; box-shadow: 0 3px 6px 0 rgba(98,109,159,0.16); overflow: hidden;">
+      <div class="exp-accordion-toggle-mobile" data-target="exp-accordion-desc-personal-mobile" style="display: flex; align-items: center; height: 64px; padding-left: 40px; padding-right: 12px; cursor: pointer;">
+        <img src="/images/icons/solidarity.svg" alt="" style="width: 20px; height: auto; margin-right: 10px;" />
+        <span style="font-family: var(--font-heading); font-weight: 700; font-size: 17px; color: #121822; flex: 1;">PERSONAL</span>
+        <img class="exp-accordion-arrow-mobile" src="/images/icons/arrow-right-card-mobile.svg" alt="" style="width: 16px; height: auto; transition: transform 0.3s ease;" />
+      </div>
+      <div id="exp-accordion-desc-personal-mobile" class="exp-accordion-desc-mobile" style="max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.35s ease, opacity 0.3s ease; padding: 0 24px 0 40px; font-size: 14px; font-weight: 400; color: #121822; line-height: 22px;">
+        <div style="padding-bottom: 20px;">Mi experiencia combina gestión, servicio a la comunidad y liderazgo.</div>
+      </div>
+    </div>
   </div>
 </div>
+
+<script>
+  document.querySelectorAll(".exp-accordion-toggle-mobile").forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      const targetId = toggle.getAttribute("data-target");
+      const desc = targetId ? document.getElementById(targetId) : null;
+      const arrow = toggle.querySelector(".exp-accordion-arrow-mobile") as HTMLElement | null;
+      if (!desc) return;
+      const isOpen = desc.style.maxHeight !== "0px" && desc.style.maxHeight !== "";
+      if (isOpen) {
+        desc.style.maxHeight = "0px";
+        desc.style.opacity = "0";
+        if (arrow) arrow.style.transform = "rotate(0deg)";
+      } else {
+        desc.style.maxHeight = desc.scrollHeight + "px";
+        desc.style.opacity = "1";
+        if (arrow) arrow.style.transform = "rotate(90deg)";
+      }
+    });
+  });
+</script>
+
+<script>
+  const EXP_DATA_MOBILE = [
+    { year: "2022", description: "Ejercí como consultora especialista pesquero ambiental.", image: null },
+    { year: "2021-2022", description: "Servicio especializado en INGENIERÍA PESQUERA para consejo regional – Gobierno Regional de Arequipa.", image: "/images/mobile/experiencia-main.jpg" },
+    { year: "2019", description: "Inspectora del Gobierno Regional de Arequipa en la Gerencia Regional de la Producción.", image: null },
+    { year: "2017 -2018", description: "Encargada de la Dirección Zonal de Producción Islay – Gerencia Regional de la Producción en el Gobierno Regional de Arequipa.", image: null },
+    { year: "2016-2017", description: "Sub Gerente de Pesca – Gerencia Regional de la Producción en el Gobierno Regional de Arequipa.", image: null },
+    { year: "2015-2016", description: "Encargada de la Dirección Zonal de Islay – Gerencia Regional de la Producción en el Gobierno Regional de Arequipa.", image: null },
+    { year: "2013-2014", description: "Inspector de seguimiento control y vigilancia de recursos hidrobiológicos – Gerencia Regional de la Producción en el Gobierno Regional de Arequipa.", image: null },
+    { year: "2012-2013", description: "Inspector y supervisor desconcentrado de recursos hidrobiológicos en el Ministerio de la Producción.", image: null },
+    { year: "2011 -2012", description: "Inspectora Agricultural Services – control de descarga para el SGS del Perú S.A.C.", image: null },
+    { year: "2010", description: "Asistente técnico del PIP – Servicio Nacional de Áreas Protegidas por el Estado “SERNANP”.", image: null },
+  ];
+
+  const ACTIVE_STYLE_MOBILE = { fontWeight: "800", fontSize: "28px", color: "#d70202" };
+  const INACTIVE_STYLE_MOBILE = { fontWeight: "700", fontSize: "18px", color: "#121822" };
+
+  const yearElsMobile = document.querySelectorAll(".exp-year-mobile") as NodeListOf<HTMLElement>;
+  const dotElsMobile = document.querySelectorAll(".exp-dot-mobile") as NodeListOf<HTMLImageElement>;
+  const descriptionElMobile = document.getElementById("exp-description-mobile");
+  const imageElMobile = document.getElementById("exp-image-mobile") as HTMLImageElement | null;
+  const placeholderElMobile = document.getElementById("exp-placeholder-mobile");
+
+  function replayFadeMobile(el: HTMLElement | null) {
+    if (!el) return;
+    el.classList.remove("exp-fade-slide");
+    void el.offsetWidth;
+    el.classList.add("exp-fade-slide");
+  }
+
+  function setActiveExperienciaMobile(index: number) {
+    yearElsMobile.forEach((el) => {
+      const i = Number(el.getAttribute("data-index"));
+      const style = i === index ? ACTIVE_STYLE_MOBILE : INACTIVE_STYLE_MOBILE;
+      el.style.fontWeight = style.fontWeight;
+      el.style.fontSize = style.fontSize;
+      el.style.color = style.color;
+    });
+
+    dotElsMobile.forEach((el) => {
+      const i = Number(el.getAttribute("data-index"));
+      el.src = i === index ? "/images/icons/dot-red.svg" : "/images/icons/dot.svg";
+    });
+
+    const data = EXP_DATA_MOBILE[index];
+    if (descriptionElMobile) descriptionElMobile.textContent = data.description;
+    replayFadeMobile(descriptionElMobile);
+
+    if (imageElMobile && placeholderElMobile) {
+      if (data.image) {
+        imageElMobile.src = data.image;
+        imageElMobile.style.display = "block";
+        placeholderElMobile.style.display = "none";
+      } else {
+        imageElMobile.style.display = "none";
+        placeholderElMobile.style.display = "block";
+      }
+    }
+  }
+
+  yearElsMobile.forEach((el) => {
+    el.addEventListener("click", () => setActiveExperienciaMobile(Number(el.getAttribute("data-index"))));
+  });
+  dotElsMobile.forEach((el) => {
+    el.addEventListener("click", () => setActiveExperienciaMobile(Number(el.getAttribute("data-index"))));
+  });
+</script>
