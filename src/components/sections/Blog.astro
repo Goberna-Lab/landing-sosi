@@ -6,9 +6,9 @@ export interface Props {
 }
 
 const {
-  mainImage = "/images/sosi-v3.png",
-  article1Image = "/images/blog-thumb-1.png",
-  article2Image = "/images/blog-thumb-2.png",
+  mainImage = "/landing-sosi/images/sosi-v3.png",
+  article1Image = "/landing-sosi/images/blog-thumb-1.png",
+  article2Image = "/landing-sosi/images/blog-thumb-2.png",
 } = Astro.props;
 ---
 
@@ -55,7 +55,7 @@ const {
     style="left:10.42%;top:28.64%;width:35.05%;height:60.24%;background:#000;"
   >
     <!-- Background -->
-    <img src="/images/blog-featured-bg.png" alt="" class="absolute inset-0 w-full h-full object-cover" />
+    <img src="/landing-sosi/images/blog-featured-bg.png" alt="" class="absolute inset-0 w-full h-full object-cover" />
 
     <!-- Sosi photo centered -->
     <img src={mainImage} alt="Sosi Aspilcueta" class="absolute w-[78%] h-auto top-0 left-1/2 -translate-x-1/2" />
