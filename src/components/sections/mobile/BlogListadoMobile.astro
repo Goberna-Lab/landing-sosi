@@ -1,0 +1,113 @@
+---
+interface Article {
+  image: string;
+  category: string;
+  date: string;
+  title: string;
+  description: string;
+  href: string;
+}
+
+const articles: Article[] = [
+  {
+    image: "/landing-sosi/images/laptop/blog-thumb-1.jpg",
+    category: "General",
+    date: "19/05/2026",
+    title: "El potencial pesquero de Islay: Propuestas para fortalecer la economía artesanal",
+    description: "La provincia de Islay alberga uno de los litorales más ricos y productivos del sur del Perú.",
+    href: "/landing-sosi/blog/potencial-pesquero-de-islay",
+  },
+  {
+    image: "/landing-sosi/images/laptop/blog-thumb-2.jpg",
+    category: "General",
+    date: "19/05/2026",
+    title: "Caminos seguros para quienes van a la escuela",
+    description: "Movilidad, alumbrado y espacios públicos: tres decisiones simples que cambian la vida diaria.",
+    href: "#",
+  },
+  {
+    image: "/landing-sosi/images/mobile/blog-listado-card-placeholder.png",
+    category: "General",
+    date: "19/05/2026",
+    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+    href: "#",
+  },
+  {
+    image: "/landing-sosi/images/mobile/blog-listado-card-placeholder.png",
+    category: "General",
+    date: "19/05/2026",
+    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+    href: "#",
+  },
+  {
+    image: "/landing-sosi/images/mobile/blog-listado-card-placeholder.png",
+    category: "General",
+    date: "19/05/2026",
+    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+    href: "#",
+  },
+  {
+    image: "/landing-sosi/images/mobile/blog-listado-card-placeholder.png",
+    category: "General",
+    date: "19/05/2026",
+    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+    href: "#",
+  },
+];
+---
+
+<div style="width: 430px; background: #fff;">
+  <!-- Hero banner -->
+  <div style="position: relative; width: 430px; height: 600px; overflow: hidden;">
+    <img src="/landing-sosi/images/mobile/blog-listado-hero-bg.png" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" />
+
+    <!-- Top gradient for title legibility -->
+    <div style="position: absolute; left: 0; top: 0; width: 100%; height: 202px; background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);"></div>
+
+    <!-- Title + Sosi photo -->
+    <div style="position: absolute; left: 50%; top: 48px; transform: translateX(-50%); width: 299px; display: flex; flex-direction: column; align-items: center; gap: 28px;">
+      <p style="margin: 0; text-align: center; color: #fff; font-family: var(--font-heading); font-size: 52px; line-height: 74.03px; letter-spacing: -1.56px; white-space: nowrap;">
+        <span style="font-weight: 800;">Ideas </span><span style="font-weight: 400;">en</span><br/><span style="font-weight: 400;">voz alta</span>
+      </p>
+      <img src="/landing-sosi/images/mobile/blog-listado-sosi.png" alt="Sosi Aspilcueta" style="width: 100%; height: auto; transform: scaleX(-1);" />
+    </div>
+  </div>
+
+  <!-- Breadcrumb -->
+  <div style="display: flex; align-items: center; gap: 10px; padding: 32px 25px 0 25px; font-family: var(--font-body); font-weight: 700; font-size: 14.1px; line-height: 24.04px;">
+    <a href="/landing-sosi/" style="color: rgba(0,0,0,0.5); text-decoration: none;">Inicio</a>
+    <span style="color: #000;">/</span>
+    <span style="color: #000;">Blog</span>
+  </div>
+
+  <!-- Article cards -->
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 50px; width: 380px; margin: 40px auto 60px auto;">
+    {articles.map((article) => (
+      <a href={article.href} style="display: block; width: 100%; text-decoration: none;">
+        <div style="width: 100%; height: 246.75px; border-radius: 8px; overflow: hidden;">
+          <img src={article.image} alt="" style="width: 100%; height: 100%; object-fit: cover;" />
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-top: 16px;">
+          <div style="display: flex; align-items: center; justify-content: center; width: 78px; height: 34px; border-radius: 8px; background: var(--color-red);">
+            <span style="font-family: var(--font-heading); font-weight: 700; font-size: 14px; color: #fff;">{article.category}</span>
+          </div>
+          <span style="font-family: var(--font-heading); font-weight: 600; font-size: 14px; line-height: 23.8px; color: rgba(18,24,34,0.5);">{article.date}</span>
+        </div>
+        <p style="margin: 20px 0 0 0; font-family: var(--font-heading); font-weight: 700; font-size: 20px; line-height: 24px; color: var(--color-black);">
+          {article.title}
+        </p>
+        <p style="margin: 12px 0 0 0; font-family: var(--font-body); font-weight: 400; font-size: 16px; line-height: 24px; color: rgba(18,24,34,0.5);">
+          {article.description}
+        </p>
+        <div style="display: flex; align-items: center; gap: 5px; margin-top: 16px;">
+          <span style="font-family: var(--font-heading); font-weight: 600; font-size: 16px; letter-spacing: 0.5px; color: var(--color-red);">Leer más</span>
+          <img src="/landing-sosi/images/icons/arrow-right-card-mobile.svg" alt="" style="width: 11px; height: auto;" />
+        </div>
+      </a>
+    ))}
+  </div>
+</div>

@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/global/Header.astro";
+import HeaderLaptop from "../components/global/HeaderLaptop.astro";
+import HeaderMobile from "../components/global/HeaderMobile.astro";
+import BlogListado from "../components/sections/BlogListado.astro";
+import BlogListadoLaptop from "../components/sections/laptop/BlogListadoLaptop.astro";
+import BlogListadoMobile from "../components/sections/mobile/BlogListadoMobile.astro";
+---
+
+<Layout
+  title="Blog — Sosi Aspilcueta"
+  description="Ideas en voz alta: artículos y noticias de Sosi Aspilcueta, Teniente Alcaldesa de Mejía."
+>
+  <!-- Desktop version (>= 1366px) -->
+  <div class="desktop-only">
+    <Header />
+    <main>
+      <BlogListado />
+    </main>
+  </div>
+
+  <!-- Laptop version (<= 1366px, > 430px) -->
+  <div class="laptop-only">
+    <HeaderLaptop />
+    <main>
+      <BlogListadoLaptop />
+    </main>
+  </div>
+
+  <!-- Mobile version (<= 430px) -->
+  <div class="mobile-only">
+    <HeaderMobile />
+    <main>
+      <BlogListadoMobile />
+    </main>
+  </div>
+</Layout>

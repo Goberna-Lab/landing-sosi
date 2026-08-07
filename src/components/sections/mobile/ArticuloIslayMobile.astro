@@ -1,0 +1,90 @@
+---
+const relatedPosts = [
+  {
+    image: "/landing-sosi/images/laptop/blog-thumb-2.jpg",
+    title: "Caminos seguros para quienes van a la escuela",
+    date: "12/03/2026",
+  },
+  {
+    image: "/landing-sosi/images/mobile/blog-listado-card-placeholder.png",
+    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    date: "27/03/2026",
+  },
+  {
+    image: "/landing-sosi/images/mobile/blog-listado-card-placeholder.png",
+    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    date: "21/04/2025",
+  },
+  {
+    image: "/landing-sosi/images/mobile/blog-listado-card-placeholder.png",
+    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    date: "21/04/2025",
+  },
+];
+---
+
+<div style="width: 430px; background: #fff;">
+  <!-- Breadcrumb -->
+  <div style="padding: 32px 25px 0 25px; font-family: var(--font-body); font-weight: 700; font-size: 14.1px; line-height: 24.04px;">
+    <a href="/landing-sosi/" style="color: rgba(0,0,0,0.5); text-decoration: none;">Inicio</a>
+    <span style="color: #000;"> / </span>
+    <span style="color: rgba(0,0,0,0.5);">General</span>
+    <span style="color: #000;"> / </span>
+    <span style="color: #000;">El potencial pesquero de Islay: Propuestas para fortalecer la economía artesanal</span>
+  </div>
+
+  <!-- Article -->
+  <div style="width: 380px; margin: 24px auto 0 auto;">
+    <h1 style="margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: 21.1px; line-height: 1.1; color: #000;">
+      El potencial pesquero de Islay: Propuestas para fortalecer la economía artesanal
+    </h1>
+
+    <div style="display: flex; align-items: center; gap: 9px; margin-top: 12px;">
+      <div style="display: flex; align-items: center; justify-content: center; width: 73px; height: 34px; border-radius: 6px; background: var(--color-red);">
+        <span style="font-family: var(--font-heading); font-weight: 700; font-size: 14px; color: #fff;">General</span>
+      </div>
+      <span style="font-family: var(--font-heading); font-weight: 600; font-size: 14px; color: rgba(0,0,0,0.5);">19/05/2026</span>
+    </div>
+
+    <div style="margin-top: 16px; width: 100%; aspect-ratio: 356.56 / 267.42; border-radius: 6px; overflow: hidden;">
+      <img src="/landing-sosi/images/laptop/blog-thumb-1.jpg" alt="Pesca artesanal en Islay" style="width: 100%; height: 100%; object-fit: cover;" />
+    </div>
+
+    <p style="margin: 16px 0 0 0; font-family: var(--font-body); font-weight: 400; font-size: 14.1px; line-height: 24.04px; color: #000;">
+      La provincia de Islay alberga uno de los litorales más ricos y productivos del sur del Perú. Durante décadas, la pesca artesanal ha sido el motor silencioso de nuestras familias costeras, alimentando no solo a nuestros hogares, sino también abasteciendo a gran parte del mercado regional. Sin embargo, en un contexto global que exige innovación, sostenibilidad y mayor valor agregado, no podemos seguir viendo a la pesca artesanal con la mirada del siglo pasado. Es momento de transformar ese potencial latente en un verdadero motor de desarrollo económico local y equitativo.
+    </p>
+
+    <div style="margin-top: 24px; width: 100%; aspect-ratio: 356.56 / 237.7;">
+      <img src="/landing-sosi/images/mobile/blog-detalle-islay-2.png" alt="Litoral de Islay" style="width: 100%; height: 100%; object-fit: cover;" />
+    </div>
+
+    <p style="margin: 16px 0 0 0; font-family: var(--font-body); font-weight: 400; font-size: 14.1px; line-height: 24.04px; color: #000;">
+      Para lograrlo, se requiere una visión técnica que combine el conocimiento del mar con una gestión pública moderna y eficiente. A continuación, comparto cuatro pilares estratégicos para fortalecer a nuestros pescadores artesanales y asegurar el futuro productivo de Islay.
+    </p>
+
+    <div style="display: flex; align-items: center; gap: 15px; margin-top: 29px; padding-bottom: 12px; border-bottom: 2px solid var(--color-red);">
+      <span style="font-family: var(--font-body); font-size: 14.1px; color: #000;">Compartir:</span>
+      <a href="#" aria-label="Compartir en Facebook"><img src="/landing-sosi/images/icons/share-facebook.svg" alt="" style="width: 12px; height: 12px;" /></a>
+      <a href="#" aria-label="Compartir en X"><img src="/landing-sosi/images/icons/share-x.svg" alt="" style="width: 13px; height: 12px;" /></a>
+      <a href="#" aria-label="Compartir en Telegram"><img src="/landing-sosi/images/icons/share-telegram.svg" alt="" style="width: 13px; height: 11px;" /></a>
+    </div>
+
+    <!-- Post recientes -->
+    <div style="margin-top: 29px; padding-bottom: 60px;">
+      <p style="margin: 0 0 15px 0; font-family: var(--font-heading); font-weight: 700; font-size: 21.3px; color: var(--color-black);">Post Recientes</p>
+      <div style="display: flex; flex-direction: column; gap: 15px;">
+        {relatedPosts.map((post) => (
+          <a href="#" style="display: flex; gap: 20px; align-items: flex-start; text-decoration: none;">
+            <div style="width: 100px; height: 100px; border-radius: 8px; overflow: hidden; flex-shrink: 0;">
+              <img src={post.image} alt="" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 4px; padding-top: 2px;">
+              <p style="margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: 16px; line-height: 20.8px; color: var(--color-black);">{post.title}</p>
+              <p style="margin: 0; font-family: var(--font-body); font-weight: 400; font-size: 12.4px; color: rgba(18,24,34,0.6);">{post.date}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
