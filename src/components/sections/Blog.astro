@@ -6,7 +6,7 @@ export interface Props {
 }
 
 const {
-  mainImage = "/landing-sosi/images/sosi-v3.png",
+  mainImage = "/landing-sosi/images/sosi-blog.png",
   article1Image = "/landing-sosi/images/blog-thumb-1.png",
   article2Image = "/landing-sosi/images/blog-thumb-2.png",
 } = Astro.props;
@@ -58,7 +58,12 @@ const {
     <img src="/landing-sosi/images/blog-featured-bg.png" alt="" class="absolute inset-0 w-full h-full object-cover" />
 
     <!-- Sosi photo centered -->
-    <img src={mainImage} alt="Sosi Aspilcueta" class="absolute w-[78%] h-auto top-0 left-1/2 -translate-x-1/2" />
+    <img
+      src={mainImage}
+      alt="Sosi Aspilcueta"
+      class="absolute object-contain"
+      style="left:21.66%;top:8.84%;width:56.83%;height:91.16%;"
+    />
 
     <!-- Bottom gradient overlay -->
     <div

@@ -6,7 +6,7 @@ export interface Props {
 
 const {
   aboutPhoto = "/landing-sosi/images/about-photo.png",
-  mainPhoto = "/landing-sosi/images/sosi-v4.png",
+  mainPhoto = "/landing-sosi/images/sosi-about.png",
 } = Astro.props;
 ---
 
@@ -18,8 +18,8 @@ const {
     <img src={aboutPhoto} alt="" class="absolute top-0 object-cover" style="left:-4.83%;width:169.9%;height:100%" />
   </div>
 
-  <div class="absolute z-[3]" style="left:16.35%;top:11.23%;width:30.31%">
-    <img src={mainPhoto} alt="Sosi Aspilcueta" class="w-full h-auto block" />
+  <div class="absolute z-[3]" style="left:19.01%;top:11.23%;width:35.05%;height:88.66%">
+    <img src={mainPhoto} alt="Sosi Aspilcueta" class="w-full h-full object-contain block" />
   </div>
 
   <div class="absolute z-[4] flex flex-col items-start" style="left:14.28%;top:33.22%">

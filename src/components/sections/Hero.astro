@@ -4,7 +4,7 @@ export interface Props {
   noiseBg?: string;
 }
 
-const { heroImage = "/landing-sosi/images/sosi-v3.png", noiseBg = "/landing-sosi/images/fondo-ruido.png" } = Astro.props;
+const { heroImage = "/landing-sosi/images/sosi-hero.png", noiseBg = "/landing-sosi/images/fondo-ruido.png" } = Astro.props;
 ---
 
 <div style="position: relative; width: var(--page); height: 1080px; overflow: hidden; background: #1a1f2e;">
@@ -46,7 +46,7 @@ const { heroImage = "/landing-sosi/images/sosi-v3.png", noiseBg = "/landing-sosi
   </a>
 
   <!-- Photo mask -->
-  <div style="position: absolute; left: 41.60%; top: 13.52%; width: 48.59%; height: 86.48%; z-index: 10; overflow: visible; pointer-events: none;">
+  <div style="position: absolute; left: 48.96%; top: 13.52%; width: 40.10%; height: 86.48%; z-index: 10; overflow: visible; pointer-events: none;">
     <img src={heroImage} alt="Sosi Aspilcueta" style="width: 100%; height: 100%; object-fit: contain; display: block;" />
   </div>
 
