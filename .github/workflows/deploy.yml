@@ -1,37 +1,35 @@
-name: Deploy to GitHub Pages
+name: Deploy
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: deploy-sosi
+  cancel-in-progress: false
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  deploy:
+    runs-on: [self-hosted, vps2-sosi]
+    timeout-minutes: 15
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Install, build, and upload your site
-        uses: withastro/action@v3
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Build
+        run: |
+          set -euo pipefail
+          npm ci --prefer-offline --no-audit --no-fund
+          npm run build
+
+      - name: Guard dist + rsync local al docroot
+        run: |
+          set -euo pipefail
+          DOCROOT=/home/sosiaspilcueta/web/sosiaspilcueta.com/public_html
+          [ -n "$(find dist -mindepth 1 -type f -print -quit)" ] || { echo "::error::dist/ vacio -> abort"; exit 1; }
+          sudo rsync -rl --delete --chmod=D755,F644 dist/ "$DOCROOT/"
+          echo "deploy OK -> $DOCROOT"
