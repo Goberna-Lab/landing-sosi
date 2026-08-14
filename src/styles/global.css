@@ -132,6 +132,25 @@ body {
   transition: opacity 0.35s ease;
 }
 
+/* Años y puntos clicables: saltan directo a esa entrada del timeline.
+   !important porque el color lo escribe el script como estilo inline. */
+.exp-year,
+.exp-dot {
+  cursor: pointer;
+}
+
+.exp-year:not(.is-active):hover,
+.exp-year:not(.is-active):focus-visible {
+  color: var(--color-red) !important;
+}
+
+.exp-year:focus-visible,
+.exp-dot:focus-visible {
+  outline: 2px solid var(--color-red);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
 @keyframes exp-fade-slide {
   from { opacity: 0; transform: translateX(24px); }
   to { opacity: 1; transform: translateX(0); }

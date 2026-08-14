@@ -134,10 +134,13 @@
 
     section.querySelectorAll(".exp-year").forEach((el) => {
       const i = Number(el.getAttribute("data-index"));
-      const style = i === activeIndex ? ACTIVE_STYLE : INACTIVE_STYLE;
+      const isActive = i === activeIndex;
+      const style = isActive ? ACTIVE_STYLE : INACTIVE_STYLE;
       el.style.fontWeight = style.fontWeight;
       el.style.fontSize = style.fontSize;
       el.style.color = style.color;
+      el.classList.toggle("is-active", isActive);
+      el.setAttribute("aria-current", isActive ? "true" : "false");
     });
 
     section.querySelectorAll(".exp-dot").forEach((el) => {
@@ -170,6 +173,12 @@
     firstRender = false;
   }
 
+  function goToExperiencia(index) {
+    if (index === activeIndex || index < 0 || index >= EXP_DATA.length) return;
+    activeIndex = index;
+    renderExperiencia();
+  }
+
   document.getElementById("exp-next")?.addEventListener("click", () => {
     if (activeIndex < EXP_DATA.length - 1) {
       activeIndex++;
@@ -183,6 +192,27 @@
       renderExperiencia();
     }
   });
+
+  // Salto directo: click (o Enter/Espacio) sobre un año o su punto del timeline
+  document
+    .getElementById("trayectoria")
+    ?.querySelectorAll(".exp-year, .exp-dot")
+    .forEach((el) => {
+      const i = Number(el.getAttribute("data-index"));
+      if (Number.isNaN(i)) return;
+
+      el.setAttribute("role", "button");
+      el.setAttribute("tabindex", "0");
+      el.setAttribute("aria-label", `Ver experiencia de ${EXP_DATA[i].year}`);
+
+      el.addEventListener("click", () => goToExperiencia(i));
+      el.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          goToExperiencia(i);
+        }
+      });
+    });
 
   renderExperiencia();
 </script>

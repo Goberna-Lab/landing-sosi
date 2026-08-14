@@ -130,10 +130,13 @@
 
     section.querySelectorAll(".exp-year").forEach((el) => {
       const i = Number(el.getAttribute("data-index"));
-      const style = i === activeIndexLaptop ? ACTIVE_STYLE_LAPTOP : INACTIVE_STYLE_LAPTOP;
+      const isActive = i === activeIndexLaptop;
+      const style = isActive ? ACTIVE_STYLE_LAPTOP : INACTIVE_STYLE_LAPTOP;
       (el as HTMLElement).style.fontWeight = style.fontWeight;
       (el as HTMLElement).style.fontSize = style.fontSize;
       (el as HTMLElement).style.color = style.color;
+      el.classList.toggle("is-active", isActive);
+      el.setAttribute("aria-current", isActive ? "true" : "false");
     });
 
     section.querySelectorAll(".exp-dot").forEach((el) => {
@@ -165,6 +168,12 @@
     firstRenderLaptop = false;
   }
 
+  function goToExperienciaLaptop(index: number) {
+    if (index === activeIndexLaptop || index < 0 || index >= EXP_DATA_LAPTOP.length) return;
+    activeIndexLaptop = index;
+    renderExperienciaLaptop();
+  }
+
   document.getElementById("exp-next-laptop")?.addEventListener("click", () => {
     if (activeIndexLaptop < EXP_DATA_LAPTOP.length - 1) {
       activeIndexLaptop++;
@@ -178,6 +187,27 @@
       renderExperienciaLaptop();
     }
   });
+
+  // Salto directo: click (o Enter/Espacio) sobre un año o su punto del timeline
+  document
+    .getElementById("trayectoria-laptop")
+    ?.querySelectorAll(".exp-year, .exp-dot")
+    .forEach((el) => {
+      const i = Number(el.getAttribute("data-index"));
+      if (Number.isNaN(i)) return;
+
+      el.setAttribute("role", "button");
+      el.setAttribute("tabindex", "0");
+      el.setAttribute("aria-label", `Ver experiencia de ${EXP_DATA_LAPTOP[i].year}`);
+
+      el.addEventListener("click", () => goToExperienciaLaptop(i));
+      el.addEventListener("keydown", (event) => {
+        if ((event as KeyboardEvent).key === "Enter" || (event as KeyboardEvent).key === " ") {
+          event.preventDefault();
+          goToExperienciaLaptop(i);
+        }
+      });
+    });
 
   renderExperienciaLaptop();
 </script>
