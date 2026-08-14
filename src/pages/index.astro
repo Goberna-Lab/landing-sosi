@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/global/Header.astro";
 import HeaderMobile from "../components/global/HeaderMobile.astro";
+import HeaderLaptop from "../components/global/HeaderLaptop.astro";
 import Hero from "../components/sections/Hero.astro";
 import About from "../components/sections/About.astro";
 import Contigo from "../components/sections/Contigo.astro";
@@ -57,6 +58,7 @@ import ContactoMobile from "../components/sections/mobile/ContactoMobile.astro";
 
   <!-- Laptop version (<= 1366px, > 430px) -->
   <div class="laptop-only">
+    <HeaderLaptop />
     <main>
       <HeroLaptop />
       <AboutLaptop />

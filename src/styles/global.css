@@ -38,7 +38,10 @@
 .stage {
   width: var(--page);
   margin-inline: auto;
-  overflow: hidden;
+  /* clip (no hidden): recorta el desborde horizontal sin crear un scroll
+     container, que dejaria inerte el position:sticky del header */
+  overflow-x: clip;
+  overflow-y: visible;
   zoom: var(--stage-scale);
 }
 

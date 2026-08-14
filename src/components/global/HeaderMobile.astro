@@ -1,7 +1,7 @@
 ---
 ---
 
-<header style="position: relative; width: 430px; height: 72px; background: #fff; box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16); display: flex; align-items: center; z-index: 100;">
+<header style="position: sticky; top: 0; width: 430px; height: 72px; background: #fff; box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16); display: flex; align-items: center; z-index: 100;">
   <!-- Logo -->
   <a href="/" aria-label="SOSI — Ir al inicio" style="position: absolute; left: 16px; top: 12px;">
     <img src="/images/logo.svg" alt="SOSI" style="width: 140px; height: 48px;" />
@@ -17,15 +17,27 @@
   <!-- Mobile nav (hidden by default) -->
   <nav id="mobile-nav" aria-label="Navegación principal" style="display: none; position: absolute; top: 72px; left: 0; right: 0; background: #fff; box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16); z-index: 100; padding: 16px 0;">
     <ul style="display: flex; flex-direction: column; gap: 0; list-style: none; margin: 0; padding: 0;">
-      <li><a href="#sobre-mi" style="display: block; padding: 12px 24px; font-size: 15px; font-weight: 400; color: #2e3135; text-decoration: none; border-bottom: 1px solid #f0f0f0;">SOBRE MI</a></li>
-      <li><a href="#trayectoria" style="display: block; padding: 12px 24px; font-size: 15px; font-weight: 400; color: #2e3135; text-decoration: none; border-bottom: 1px solid #f0f0f0;">TRAYECTORIA</a></li>
-      <li><a href="#biografia" style="display: block; padding: 12px 24px; font-size: 15px; font-weight: 400; color: #2e3135; text-decoration: none; border-bottom: 1px solid #f0f0f0;">BIOGRAFÍA</a></li>
-      <li><a href="#galeria" style="display: block; padding: 12px 24px; font-size: 15px; font-weight: 400; color: #2e3135; text-decoration: none; border-bottom: 1px solid #f0f0f0;">GALERÍA</a></li>
-      <li><a href="#blog" style="display: block; padding: 12px 24px; font-size: 15px; font-weight: 400; color: #2e3135; text-decoration: none; border-bottom: 1px solid #f0f0f0;">BLOG</a></li>
-      <li><a href="#contacto" style="display: block; padding: 12px 24px; font-size: 15px; font-weight: 400; color: #2e3135; text-decoration: none;">CONTACTO</a></li>
+      <li><a href="#sobre-mi" style="display: block; padding: 12px 24px; font-size: 15px; font-weight: 400; text-decoration: none; border-bottom: 1px solid #f0f0f0;" class="nav-link-mobile">SOBRE MI</a></li>
+      <li><a href="#trayectoria" style="display: block; padding: 12px 24px; font-size: 15px; font-weight: 400; text-decoration: none; border-bottom: 1px solid #f0f0f0;" class="nav-link-mobile">TRAYECTORIA</a></li>
+      <li><a href="#biografia" style="display: block; padding: 12px 24px; font-size: 15px; font-weight: 400; text-decoration: none; border-bottom: 1px solid #f0f0f0;" class="nav-link-mobile">BIOGRAFÍA</a></li>
+      <li><a href="#galeria" style="display: block; padding: 12px 24px; font-size: 15px; font-weight: 400; text-decoration: none; border-bottom: 1px solid #f0f0f0;" class="nav-link-mobile">GALERÍA</a></li>
+      <li><a href="#blog" style="display: block; padding: 12px 24px; font-size: 15px; font-weight: 400; text-decoration: none; border-bottom: 1px solid #f0f0f0;" class="nav-link-mobile">BLOG</a></li>
+      <li><a href="#contacto" style="display: block; padding: 12px 24px; font-size: 15px; font-weight: 400; text-decoration: none;" class="nav-link-mobile">CONTACTO</a></li>
     </ul>
   </nav>
 </header>
+
+<style>
+  .nav-link-mobile {
+    color: #2e3135;
+    transition: color 0.15s ease;
+  }
+
+  .nav-link-mobile:hover,
+  .nav-link-mobile:focus-visible {
+    color: var(--color-red);
+  }
+</style>
 
 <script>
   const toggle = document.getElementById('menu-toggle');

@@ -18,7 +18,7 @@ const navItems = [
       <ul class="flex" style="gap:2rem">
         {navItems.map((item) => (
           <li>
-            <a href={item.href} class="text-red hover:text-red-dark transition-colors duration-150 whitespace-nowrap" style="font-family:var(--font-body);font-size:0.9375rem;color:#2E3135;line-height:2.3125rem">
+            <a href={item.href} class="nav-link whitespace-nowrap" style="font-family:var(--font-body);font-size:0.9375rem;line-height:2.3125rem">
               {item.label}
             </a>
           </li>
@@ -27,3 +27,15 @@ const navItems = [
     </nav>
   </div>
 </header>
+
+<style>
+  .nav-link {
+    color: #2e3135;
+    transition: color 0.15s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus-visible {
+    color: var(--color-red);
+  }
+</style>

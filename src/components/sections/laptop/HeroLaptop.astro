@@ -1,8 +1,10 @@
 ---
-import HeaderLaptop from "../../global/HeaderLaptop.astro";
 ---
 
-<div style="position: relative; width: 1366px; height: 620px; overflow: hidden;">
+<!-- El frame de Figma (1366x620) incluye el header superpuesto. Como el header
+     vive fuera (a nivel de pagina, para poder ser sticky), se sube el hero 72px
+     para que la composicion quede igual en la primera vista. -->
+<div style="position: relative; width: 1366px; height: 620px; margin-top: -72px; overflow: hidden;">
   <!-- Beach background -->
   <div style="position: absolute; inset: 0; overflow: hidden;">
     <img src="/images/laptop/playa.jpg" alt="" style="width: 100%; height: auto; min-height: 911px; object-fit: cover;" />
@@ -48,8 +50,4 @@ import HeaderLaptop from "../../global/HeaderLaptop.astro";
     style="position: absolute; left: 751px; top: 91px; width: 436px; height: 529px; object-fit: contain; max-width: none;"
   />
 
-  <!-- Header: en Figma el frame de 1366x620 lo incluye, superpuesto al hero -->
-  <div style="position: absolute; left: 0; top: 0; width: 1366px; height: 72px; z-index: 100;">
-    <HeaderLaptop />
-  </div>
 </div>
