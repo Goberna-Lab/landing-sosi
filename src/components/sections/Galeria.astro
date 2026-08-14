@@ -21,14 +21,14 @@ const {
 <div
   id="galeria"
   class="relative overflow-hidden"
-  style="width:var(--page);height:1184px;background:var(--color-white)"
+  style="width:var(--page);height:1064px;background:var(--color-white)"
 >
   <!-- Title: Un camino de -->
   <p
     class="absolute z-[4] m-0"
     style="
       left:10.42%;
-      top:9.54%;
+      top:10.62%;
       font-family:var(--font-heading);
       font-weight:800;
       font-size:clamp(2rem,3.91vw,4.6875rem);
@@ -45,7 +45,7 @@ const {
     class="absolute z-[4] m-0"
     style="
       left:38.85%;
-      top:9.71%;
+      top:10.81%;
       font-family:var(--font-heading);
       font-weight:400;
       font-size:clamp(2rem,3.91vw,4.6875rem);
@@ -59,17 +59,15 @@ const {
   <!-- Pill: Ver todo (top right) -->
   <a
     href="#"
-    class="absolute z-[5] flex items-center justify-center rounded-[76px] no-underline uppercase"
+    class="galeria-pill absolute z-[5] flex items-center justify-center rounded-[76px] no-underline uppercase"
     style="
       left:73.28%;
-      top:12.50%;
+      top:13.91%;
       width:8.11%;
-      height:3.38%;
-      border:1px solid var(--color-red);
+      height:3.76%;
       font-family:var(--font-body);
       font-weight:400;
       font-size:clamp(0.6875rem,0.625vw,0.75rem);
-      color:var(--color-red);
     "
   >
     Ver todo
@@ -78,7 +76,7 @@ const {
   <!-- Card 6: image (x=296,y=256, 427x384) -->
   <div
     class="absolute z-[1] overflow-hidden rounded-[18px]"
-    style="left:15.42%;top:21.62%;width:22.24%;height:32.43%"
+    style="left:15.42%;top:24.06%;width:22.24%;height:36.09%"
   >
     <img
       src={foto4}
@@ -90,7 +88,7 @@ const {
   <!-- Card 3: image (x=747,y=256, 427x419) -->
   <div
     class="absolute z-[1] overflow-hidden rounded-[18px]"
-    style="left:38.91%;top:21.62%;width:22.24%;height:35.39%"
+    style="left:38.91%;top:24.06%;width:22.24%;height:39.38%"
   >
     <img
       src={foto1}
@@ -102,7 +100,7 @@ const {
   <!-- Card 4: image (x=1198,y=256, 427x384) -->
   <div
     class="absolute z-[1] overflow-hidden rounded-[18px]"
-    style="left:62.40%;top:21.62%;width:22.24%;height:32.43%"
+    style="left:62.40%;top:24.06%;width:22.24%;height:36.09%"
   >
     <img
       src={foto2}
@@ -114,7 +112,7 @@ const {
   <!-- Card 5: image (x=296,y=664, 427x300) -->
   <div
     class="absolute z-[1] overflow-hidden rounded-[18px]"
-    style="left:15.42%;top:56.08%;width:22.24%;height:25.34%"
+    style="left:15.42%;top:62.40%;width:22.24%;height:28.20%"
   >
     <img
       src={foto3}
@@ -126,7 +124,7 @@ const {
   <!-- Card 1: imagen (x=747,y=699, 427x265) -->
   <div
     class="absolute z-[1] overflow-hidden rounded-[18px]"
-    style="left:38.91%; top:59.04%; width:22.24%; height:22.38%"
+    style="left:38.91%; top:65.70%; width:22.24%; height:24.90%"
   >
     <img src={foto5} alt="" class="w-full h-full object-cover" />
   </div>
@@ -134,29 +132,24 @@ const {
   <!-- Card 2: imagen (x=1198,y=664, 427x300) -->
   <div
     class="absolute z-[1] overflow-hidden rounded-[18px]"
-    style="left:62.40%; top:56.08%; width:22.24%; height:25.34%"
+    style="left:62.40%; top:62.40%; width:22.24%; height:28.20%"
   >
     <img src={foto6} alt="" class="w-full h-full object-cover" />
   </div>
 
-
-  <!-- Main CTA: Ver todo -->
-  <a
-    href="#"
-    class="absolute z-[7] flex items-center justify-center rounded-[6px] no-underline uppercase"
-    style="
-      left:42.66%;
-      top:86.15%;
-      width:14.64%;
-      height:5.41%;
-      background:var(--color-red);
-      border:1px solid var(--color-red);
-      font-family:var(--font-body);
-      font-weight:400;
-      font-size:clamp(0.9375rem,0.94vw,1.125rem);
-      color:var(--color-white);
-    "
-  >
-    Ver todo
-  </a>
 </div>
+
+<style>
+  .galeria-pill {
+    border: 1px solid var(--color-red);
+    color: var(--color-red);
+    background: transparent;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .galeria-pill:hover,
+  .galeria-pill:focus-visible {
+    background: var(--color-red);
+    color: var(--color-white);
+  }
+</style>
