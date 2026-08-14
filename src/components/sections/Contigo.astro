@@ -6,11 +6,13 @@ export interface Props {
 const { bgImage = "/images/contigo-bg.png" } = Astro.props;
 ---
 
-<div id="contigo" class="relative overflow-hidden" style="width:var(--page);height:871px">
-
-  <div class="absolute inset-0 z-0">
-    <img src={bgImage} alt="" class="w-full h-full object-cover" />
-  </div>
+<!-- background-attachment:fixed = efecto parallax: el fondo queda anclado al
+     viewport y la seccion lo va revelando al hacer scroll -->
+<div
+  id="contigo"
+  class="relative overflow-hidden"
+  style={`width:var(--page);height:871px;background-image:url(${bgImage});background-attachment:fixed;background-position:center;background-size:cover;background-repeat:no-repeat`}
+>
 
   <div class="absolute inset-0 z-[1]" style="background:#f1f2f5;opacity:0.44"></div>
 
