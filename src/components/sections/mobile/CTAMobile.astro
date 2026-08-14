@@ -19,7 +19,26 @@
   </div>
 
   <!-- Button -->
-  <div style="position: absolute; left: 31px; top: 223px; display: flex; align-items: center; justify-content: center; width: 150px; height: 48px; background: #fff; border: 1px solid #d70202; border-radius: 6px; box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16); cursor: pointer;">
-    <span style="font-size: 14px; color: #d70202; text-transform: uppercase;">ESCRÍBEME</span>
-  </div>
+  <a href="#contacto-mobile" class="cta-escribeme" style="position: absolute; left: 31px; top: 223px; display: flex; align-items: center; justify-content: center; width: 150px; height: 48px; border-radius: 6px; box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16); cursor: pointer;">
+    <span style="font-size: 14px; text-transform: uppercase;">ESCRÍBEME</span>
+  </a>
 </div>
+
+<style>
+  .cta-escribeme {
+    background: var(--color-white);
+    color: var(--color-red);
+    border: 1px solid var(--color-red);
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  /* Al invertirse, el fondo del boton iguala al de la seccion (roja):
+     el borde blanco mantiene el boton visible */
+  .cta-escribeme:hover,
+  .cta-escribeme:focus-visible {
+    background: var(--color-red);
+    color: var(--color-white);
+    border-color: var(--color-white);
+  }
+</style>

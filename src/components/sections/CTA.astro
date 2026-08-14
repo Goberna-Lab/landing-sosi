@@ -27,8 +27,27 @@
   </div>
 
   <!-- Button "ESCRÍBEME" -->
-  <a href="#" class="absolute z-[1] inline-flex items-center justify-center" style="left:10.47%;top:65.86%;width:9.375rem;height:3rem;background:var(--color-white);border:1px solid var(--color-red);border-radius:var(--radius-sm);box-shadow:var(--shadow-header)">
-    <span style="font-family:var(--font-body);font-weight:400;font-size:0.875rem;color:var(--color-red);text-transform:uppercase;line-height:2.1875rem">ESCRÍBEME</span>
+  <a href="#contacto" class="cta-escribeme absolute z-[1] inline-flex items-center justify-center" style="left:10.47%;top:65.86%;width:9.375rem;height:3rem;border-radius:var(--radius-sm);box-shadow:var(--shadow-header)">
+    <span style="font-family:var(--font-body);font-weight:400;font-size:0.875rem;text-transform:uppercase;line-height:2.1875rem">ESCRÍBEME</span>
   </a>
 
 </div>
+
+<style>
+  .cta-escribeme {
+    background: var(--color-white);
+    color: var(--color-red);
+    border: 1px solid var(--color-red);
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  /* Al invertirse, el fondo del boton iguala al de la seccion (roja):
+     el borde blanco mantiene el boton visible */
+  .cta-escribeme:hover,
+  .cta-escribeme:focus-visible {
+    background: var(--color-red);
+    color: var(--color-white);
+    border-color: var(--color-white);
+  }
+</style>
