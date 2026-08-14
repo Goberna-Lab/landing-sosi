@@ -33,17 +33,15 @@ const {
   <!-- Pill: Ver todo -->
   <a
     href="/blog"
-    class="absolute z-[5] flex items-center justify-center rounded-[76px] no-underline uppercase"
+    class="blog-pill absolute z-[5] flex items-center justify-center rounded-[76px] no-underline uppercase"
     style="
       left:73.28%;
       top:14.91%;
       width:8.11%;
       height:4.73%;
-      border:1px solid var(--color-red);
       font-family:var(--font-body);
       font-weight:400;
       font-size:clamp(0.6875rem,0.625vw,0.75rem);
-      color:var(--color-red);
     "
   >
     Ver todo
@@ -96,15 +94,14 @@ const {
 
     <!-- Leer artículo (main card) -->
     <a
-      href="#"
-      class="absolute z-[2] no-underline"
+      href="/blog"
+      class="blog-link blog-link-on-dark absolute z-[2]"
       style="
         left:73.70%;
         top:83.89%;
         font-family:var(--font-heading);
         font-weight:500;
         font-size:clamp(0.875rem,1.04vw,1.25rem);
-        color:var(--color-red);
         line-height:1;
       "
     >
@@ -161,15 +158,14 @@ const {
 
   <!-- Article 1 "Leer artículo" -->
   <a
-    href="#"
-    class="absolute z-[2] no-underline"
+    href="/blog"
+    class="blog-link absolute z-[2]"
     style="
       left:60.78%;
       top:49.70%;
       font-family:var(--font-heading);
       font-weight:500;
       font-size:clamp(0.875rem,1.04vw,1.25rem);
-      color:var(--color-red);
       line-height:1;
     "
   >
@@ -225,18 +221,53 @@ const {
 
   <!-- Article 2 "Leer artículo" -->
   <a
-    href="#"
-    class="absolute z-[2] no-underline"
+    href="/blog"
+    class="blog-link absolute z-[2]"
     style="
       left:60.78%;
       top:82.37%;
       font-family:var(--font-heading);
       font-weight:500;
       font-size:clamp(0.875rem,1.04vw,1.25rem);
-      color:var(--color-red);
       line-height:1;
     "
   >
     Leer artículo
   </a>
 </div>
+
+<style>
+  .blog-pill {
+    border: 1px solid var(--color-red);
+    color: var(--color-red);
+    background: transparent;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .blog-pill:hover,
+  .blog-pill:focus-visible {
+    background: var(--color-red);
+    color: var(--color-white);
+  }
+
+  /* "Leer articulo": subrayado que aparece al pasar el cursor */
+  .blog-link {
+    color: var(--color-red);
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 4px;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  }
+
+  .blog-link:hover,
+  .blog-link:focus-visible {
+    color: var(--color-red-dark);
+    text-decoration-color: currentColor;
+  }
+
+  /* El de la card destacada va sobre foto oscura: aclarar en vez de oscurecer */
+  .blog-link-on-dark:hover,
+  .blog-link-on-dark:focus-visible {
+    color: var(--color-white);
+  }
+</style>

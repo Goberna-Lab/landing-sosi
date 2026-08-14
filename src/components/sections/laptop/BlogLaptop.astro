@@ -9,8 +9,8 @@
   </div>
 
   <!-- Ver todo pill -->
-  <a href="/blog" style="position: absolute; left: 1130px; top: 100px; display: flex; align-items: center; justify-content: center; width: 156px; height: 40px; background: #d70202; border-radius: 76px; cursor: pointer; text-decoration: none;">
-    <span style="font-size: 12px; color: #fff; text-transform: uppercase;">Ver todo</span>
+  <a href="/blog" class="blog-pill-laptop" style="position: absolute; left: 1130px; top: 100px; display: flex; align-items: center; justify-content: center; width: 156px; height: 40px; border-radius: 76px; cursor: pointer; text-decoration: none;">
+    <span style="font-size: 12px; text-transform: uppercase;">Ver todo</span>
   </a>
 
   <!-- Featured card -->
@@ -27,7 +27,7 @@
     <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 113px; background: linear-gradient(to bottom, rgba(18,24,34,0), #121822);"></div>
     <!-- Text overlay -->
     <p style="position: absolute; left: 29px; bottom: 55px; font-family: var(--font-heading); font-weight: 500; font-size: 22px; color: #fff; margin: 0;">Conoce más sobre mí</p>
-    <p style="position: absolute; right: 36px; bottom: 55px; font-family: var(--font-heading); font-weight: 500; font-size: 18px; color: #d70202; margin: 0; cursor: pointer;">Leer artículo</p>
+    <a href="/blog" class="blog-link-laptop blog-link-laptop-on-dark" style="position: absolute; right: 36px; bottom: 55px; font-family: var(--font-heading); font-weight: 500; font-size: 18px; margin: 0;">Leer artículo</a>
   </div>
 
   <!-- Article 1 thumbnail -->
@@ -45,7 +45,7 @@
   <p style="position: absolute; left: 926px; top: 293px; width: 346px; font-size: 16px; font-weight: 400; color: #121822; line-height: 24px; margin: 0;">La provincia de Islay alberga uno de los litorales más ricos y productivos del sur del Perú.</p>
 
   <!-- Article 1 link -->
-  <p style="position: absolute; left: 926px; top: 366px; font-family: var(--font-heading); font-weight: 500; font-size: 18px; color: #d70202; margin: 0; cursor: pointer;">Leer artículo</p>
+  <a href="/blog" class="blog-link-laptop" style="position: absolute; left: 926px; top: 366px; font-family: var(--font-heading); font-weight: 500; font-size: 18px; margin: 0;">Leer artículo</a>
 
   <!-- Article 2 thumbnail -->
   <div style="position: absolute; left: 701px; top: 456px; width: 200px; height: 200px; border-radius: 10px; overflow: hidden;">
@@ -62,5 +62,42 @@
   <p style="position: absolute; left: 926px; top: 525px; width: 346px; font-size: 16px; font-weight: 400; color: #121822; line-height: 24px; margin: 0;">Movilidad, alumbrado y espacios públicos: tres decisiones simples que cambian la vida diaria.</p>
 
   <!-- Article 2 link -->
-  <p style="position: absolute; left: 926px; top: 608px; font-family: var(--font-heading); font-weight: 500; font-size: 18px; color: #d70202; margin: 0; cursor: pointer;">Leer artículo</p>
+  <a href="/blog" class="blog-link-laptop" style="position: absolute; left: 926px; top: 608px; font-family: var(--font-heading); font-weight: 500; font-size: 18px; margin: 0;">Leer artículo</a>
 </div>
+
+<style>
+  .blog-pill-laptop {
+    border: 1px solid var(--color-red);
+    color: var(--color-red);
+    background: transparent;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .blog-pill-laptop:hover,
+  .blog-pill-laptop:focus-visible {
+    background: var(--color-red);
+    color: var(--color-white);
+  }
+
+  /* "Leer articulo": subrayado que aparece al pasar el cursor */
+  .blog-link-laptop {
+    color: var(--color-red);
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 4px;
+    cursor: pointer;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  }
+
+  .blog-link-laptop:hover,
+  .blog-link-laptop:focus-visible {
+    color: var(--color-red-dark);
+    text-decoration-color: currentColor;
+  }
+
+  /* El de la card destacada va sobre foto oscura: aclarar en vez de oscurecer */
+  .blog-link-laptop-on-dark:hover,
+  .blog-link-laptop-on-dark:focus-visible {
+    color: var(--color-white);
+  }
+</style>
