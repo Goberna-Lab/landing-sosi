@@ -9,12 +9,12 @@
   </div>
 
   <!-- Ver todo pill -->
-  <a href="/blog" style="position: absolute; left: 25px; top: 136px; display: flex; align-items: center; justify-content: center; width: 125px; height: 32px; border: 1px solid #d70202; border-radius: 76px; cursor: pointer; text-decoration: none;">
-    <span style="font-size: 10px; color: #d70202; text-transform: uppercase;">Ver todo</span>
+  <a href="/blog" class="blog-ver-todo-mobile" style="position: absolute; left: 25px; top: 136px; display: flex; align-items: center; justify-content: center; width: 125px; height: 32px; border: 1px solid #d70202; border-radius: 76px; cursor: pointer; text-decoration: none;">
+    <span class="blog-ver-todo-text-mobile" style="font-size: 10px; text-transform: uppercase;">Ver todo</span>
   </a>
 
   <!-- Blog card -->
-  <div style="position: absolute; left: 44px; top: 216px; width: 343px; height: 270px; border-radius: 10px; overflow: hidden; background: #1a1f2e;">
+  <div id="blog-card-mobile" style="position: absolute; left: 44px; top: 216px; width: 343px; height: 270px; border-radius: 10px; overflow: hidden; background: #1a1f2e; cursor: pointer;">
     <!-- Slide photo (full-bleed, single flattened image per slide) -->
     <img id="blog-photo-mobile" src="/images/mobile/blog-featured-mobile.png" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" />
     <!-- Month badge -->
@@ -36,7 +36,7 @@
   <p id="blog-description-mobile" class="blog-fade-mobile" style="position: absolute; left: 54px; top: 535px; width: 327px; font-size: 13px; font-weight: 400; color: #2e3135; line-height: 20px; margin: 0;">Soy Sosi Aspilcueta, nací el 20 de enero de 1986 en Mejía, un encantador distrito ubicado en Arequipa, Perú.</p>
 
   <!-- Read more link -->
-  <p id="blog-readmore-mobile" style="position: absolute; left: 55px; top: 611px; font-size: 14px; font-weight: 400; color: #e74942; margin: 0; cursor: pointer;">Leer nota completa</p>
+  <a id="blog-readmore-mobile" href="/blog" style="position: absolute; left: 55px; top: 611px; font-size: 14px; font-weight: 400; color: #e74942; margin: 0; cursor: pointer; text-decoration: none;">Leer nota completa</a>
 
   <!-- Carousel dots -->
   <div style="position: absolute; left: 185px; top: 653px; display: flex; gap: 8px;">
@@ -49,6 +49,20 @@
 <style>
   @keyframes blog-fade-mobile-anim { from { opacity: 0; } to { opacity: 1; } }
   .blog-fade-mobile { animation: blog-fade-mobile-anim 0.35s ease; }
+
+  .blog-ver-todo-mobile {
+    transition: background 0.25s ease;
+  }
+  .blog-ver-todo-mobile:hover {
+    background: #d70202;
+  }
+  .blog-ver-todo-text-mobile {
+    color: #d70202;
+    transition: color 0.25s ease;
+  }
+  .blog-ver-todo-mobile:hover .blog-ver-todo-text-mobile {
+    color: #fff;
+  }
 </style>
 
 <script>
@@ -60,6 +74,7 @@
       date: "30 DE JULIO 2026",
       description: "Soy Sosi Aspilcueta, nací el 20 de enero de 1986 en Mejía, un encantador distrito ubicado en Arequipa, Perú.",
       readMore: "Leer nota completa",
+      href: "/blog",
     },
     {
       badge: null,
@@ -68,6 +83,7 @@
       date: null,
       description: "La provincia de Islay alberga uno de los litorales más ricos y productivos del sur del Perú.",
       readMore: "Leer artículo",
+      href: "/blog/potencial-pesquero-de-islay",
     },
     {
       badge: null,
@@ -76,17 +92,19 @@
       date: null,
       description: "Movilidad, alumbrado y espacios públicos: tres decisiones simples que cambian la vida diaria.",
       readMore: "Leer artículo",
+      href: "/blog",
     },
   ];
 
   let blogIndexMobile = 0;
 
+  const cardEl = document.getElementById("blog-card-mobile");
   const photoEl = document.getElementById("blog-photo-mobile") as HTMLImageElement | null;
   const badgeEl = document.getElementById("blog-badge-mobile");
   const titleEl = document.getElementById("blog-title-mobile");
   const dateEl = document.getElementById("blog-date-mobile");
   const descriptionEl = document.getElementById("blog-description-mobile");
-  const readMoreEl = document.getElementById("blog-readmore-mobile");
+  const readMoreEl = document.getElementById("blog-readmore-mobile") as HTMLAnchorElement | null;
   const dotEls = document.querySelectorAll(".blog-dot-mobile") as NodeListOf<HTMLElement>;
 
   function replayFadeBlogMobile(el: HTMLElement | null) {
@@ -109,7 +127,11 @@
     if (dateEl) dateEl.style.display = data.date ? "block" : "none";
     if (dateEl && data.date) dateEl.textContent = data.date;
     if (descriptionEl) descriptionEl.textContent = data.description;
-    if (readMoreEl) readMoreEl.textContent = data.readMore;
+    if (readMoreEl) {
+      readMoreEl.textContent = data.readMore;
+      readMoreEl.href = data.href;
+    }
+    if (cardEl) cardEl.dataset.href = data.href;
 
     replayFadeBlogMobile(titleEl);
     replayFadeBlogMobile(descriptionEl);
@@ -129,5 +151,12 @@
   document.getElementById("blog-next-mobile")?.addEventListener("click", () => goToBlogMobile(blogIndexMobile + 1));
   dotEls.forEach((dot) => {
     dot.addEventListener("click", () => goToBlogMobile(Number(dot.getAttribute("data-index"))));
+  });
+
+  if (cardEl) cardEl.dataset.href = BLOG_DATA_MOBILE[blogIndexMobile].href;
+
+  cardEl?.addEventListener("click", () => {
+    const href = cardEl.dataset.href;
+    if (href) window.location.href = href;
   });
 </script>
