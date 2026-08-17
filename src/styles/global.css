@@ -178,3 +178,33 @@ body {
 .bio-slide-up {
   animation: bio-slide-up 0.45s ease;
 }
+
+/* Botones con flecha: pequeño desplazamiento al hacer hover */
+.btn-arrow {
+  transition: transform 0.25s ease;
+}
+
+a:hover .btn-arrow,
+button:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* Blog: línea roja bajo "Leer más" al hacer hover en la card */
+.blog-leer-mas {
+  position: relative;
+}
+
+.blog-leer-mas::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background: var(--color-red);
+  transition: width 0.25s ease;
+}
+
+.blog-card-link:hover .blog-leer-mas::after {
+  width: 100%;
+}
