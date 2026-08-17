@@ -87,7 +87,7 @@ const articles: Article[] = [
 
     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px;">
       {articles.map((article) => (
-        <a href={article.href} style="display: block; text-decoration: none;">
+        <a href={article.href} class="blog-card-link" style="display: block; text-decoration: none;">
           <div style="width: 100%; height: 246.75px; border-radius: 8px; overflow: hidden;">
             <img src={article.image} alt="" style="width: 100%; height: 100%; object-fit: cover;" />
           </div>
@@ -104,7 +104,7 @@ const articles: Article[] = [
             {article.description}
           </p>
           <div style="display: flex; align-items: center; gap: 5px; margin-top: 16px;">
-            <span style="font-family: var(--font-heading); font-weight: 600; font-size: 16px; letter-spacing: 0.5px; color: var(--color-red);">Leer más</span>
+            <span class="blog-leer-mas" style="font-family: var(--font-heading); font-weight: 600; font-size: 16px; letter-spacing: 0.5px; color: var(--color-red);">Leer más</span>
             <img src="/images/icons/arrow-right-card-mobile.svg" alt="" style="width: 11px; height: auto;" />
           </div>
         </a>
