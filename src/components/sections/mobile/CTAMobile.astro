@@ -19,7 +19,7 @@
   </div>
 
   <!-- Button -->
-  <a href="#contacto-mobile" class="cta-escribeme" style="position: absolute; left: 31px; top: 223px; display: flex; align-items: center; justify-content: center; width: 150px; height: 48px; border-radius: 6px; box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16); cursor: pointer;">
+  <a id="cta-escribeme-mobile" href="#formulario-mobile" class="cta-escribeme" style="position: absolute; left: 31px; top: 223px; display: flex; align-items: center; justify-content: center; width: 150px; height: 48px; border-radius: 6px; box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16); cursor: pointer;">
     <span style="font-size: 14px; text-transform: uppercase;">ESCRÍBEME</span>
   </a>
 </div>
@@ -42,3 +42,27 @@
     border-color: var(--color-white);
   }
 </style>
+
+<script>
+  // El salto nativo del ancla dejaria el formulario debajo del header sticky
+  // (72px) y no tiene en cuenta el `zoom` del stage: lo calculamos a mano.
+  const HEADER_H = 72;
+  const GAP = 16;
+
+  const boton = document.getElementById('cta-escribeme-mobile');
+  const formulario = document.getElementById('formulario-mobile');
+
+  if (boton && formulario) {
+    boton.addEventListener('click', (e) => {
+      e.preventDefault();
+      const escala = parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue('--stage-scale')
+      ) || 1;
+      const destino =
+        formulario.getBoundingClientRect().top +
+        window.scrollY -
+        (HEADER_H + GAP) * escala;
+      window.scrollTo({ top: Math.max(0, destino), behavior: 'smooth' });
+    });
+  }
+</script>
