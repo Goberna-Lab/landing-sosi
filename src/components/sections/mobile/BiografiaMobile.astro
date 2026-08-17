@@ -15,7 +15,9 @@
     <div class="bio-accordion-item-mobile">
       <div class="bio-accordion-header-mobile" data-index="0" style="display: flex; align-items: center; justify-content: space-between; height: 56px; padding: 0 16px; cursor: pointer;">
         <span class="bio-accordion-label-mobile" style="font-family: var(--font-heading); font-weight: 500; font-size: 16px; letter-spacing: -0.02em; text-transform: uppercase; color: #171717;">Mis raíces</span>
-        <img class="bio-accordion-chevron-mobile" src="/images/icons/arrow-right-card-mobile.svg" alt="" style="width: 10px; height: auto;" />
+        <svg class="bio-accordion-chevron-mobile" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
+          <path d="M1 1.5L7 6.5L13 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </div>
       <div class="bio-accordion-panel-mobile" data-index="0" style="max-height: 2000px; overflow: hidden; transition: max-height 0.4s ease;">
         <div style="padding: 24px 20px 32px;">
@@ -35,7 +37,9 @@
     <div class="bio-accordion-item-mobile">
       <div class="bio-accordion-header-mobile" data-index="1" style="display: flex; align-items: center; justify-content: space-between; height: 56px; padding: 0 16px; cursor: pointer;">
         <span class="bio-accordion-label-mobile" style="font-family: var(--font-heading); font-weight: 500; font-size: 16px; letter-spacing: -0.02em; text-transform: uppercase; color: #171717;">Mi formación</span>
-        <img class="bio-accordion-chevron-mobile" src="/images/icons/arrow-right-card-mobile.svg" alt="" style="width: 10px; height: auto;" />
+        <svg class="bio-accordion-chevron-mobile" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
+          <path d="M1 1.5L7 6.5L13 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </div>
       <div class="bio-accordion-panel-mobile" data-index="1" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease;">
         <div style="padding: 24px 20px 32px;">
@@ -72,7 +76,9 @@
     <div class="bio-accordion-item-mobile">
       <div class="bio-accordion-header-mobile" data-index="2" style="display: flex; align-items: center; justify-content: space-between; height: 56px; padding: 0 16px; cursor: pointer;">
         <span class="bio-accordion-label-mobile" style="font-family: var(--font-heading); font-weight: 500; font-size: 16px; letter-spacing: -0.02em; text-transform: uppercase; color: #171717;">Mi experiencia</span>
-        <img class="bio-accordion-chevron-mobile" src="/images/icons/arrow-right-card-mobile.svg" alt="" style="width: 10px; height: auto;" />
+        <svg class="bio-accordion-chevron-mobile" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
+          <path d="M1 1.5L7 6.5L13 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </div>
       <div class="bio-accordion-panel-mobile" data-index="2" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease;">
         <div style="padding: 24px 20px 32px;">
@@ -110,18 +116,22 @@
 </div>
 
 <style>
+  .bio-accordion-header-mobile {
+    color: #171717;
+  }
   .bio-accordion-header-mobile.is-active {
     background: #d70202;
     border-radius: 4px;
-  }
-  .bio-accordion-header-mobile.is-active .bio-accordion-label-mobile {
     color: #fff;
   }
-  .bio-accordion-header-mobile.is-active .bio-accordion-chevron-mobile {
-    display: none;
+  .bio-accordion-header-mobile.is-active .bio-accordion-label-mobile {
+    color: #fff !important;
   }
   .bio-accordion-chevron-mobile {
-    transition: transform 0.2s ease;
+    transition: transform 0.3s ease;
+  }
+  .bio-accordion-header-mobile.is-active .bio-accordion-chevron-mobile {
+    transform: rotate(180deg);
   }
 </style>
 
