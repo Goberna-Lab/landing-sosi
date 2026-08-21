@@ -6,6 +6,12 @@ import HeaderMobile from "../components/global/HeaderMobile.astro";
 import BlogListado from "../components/sections/BlogListado.astro";
 import BlogListadoLaptop from "../components/sections/laptop/BlogListadoLaptop.astro";
 import BlogListadoMobile from "../components/sections/mobile/BlogListadoMobile.astro";
+import { fetchArticles } from "../lib/bravo";
+
+// Un solo fetch para las tres versiones: el sitio renderiza desktop/laptop/mobile a la
+// vez en el DOM, así que si cada componente pidiera lo suyo serían tres llamadas
+// idénticas por build. Si Bravo no responde esto tira, y el build falla a propósito.
+const articles = await fetchArticles();
 ---
 
 <Layout
@@ -16,7 +22,7 @@ import BlogListadoMobile from "../components/sections/mobile/BlogListadoMobile.a
   <div class="desktop-only">
     <Header />
     <main>
-      <BlogListado />
+      <BlogListado articles={articles} />
     </main>
   </div>
 
@@ -24,7 +30,7 @@ import BlogListadoMobile from "../components/sections/mobile/BlogListadoMobile.a
   <div class="laptop-only">
     <HeaderLaptop />
     <main>
-      <BlogListadoLaptop />
+      <BlogListadoLaptop articles={articles} />
     </main>
   </div>
 
@@ -32,7 +38,7 @@ import BlogListadoMobile from "../components/sections/mobile/BlogListadoMobile.a
   <div class="mobile-only">
     <HeaderMobile />
     <main>
-      <BlogListadoMobile />
+      <BlogListadoMobile articles={articles} />
     </main>
   </div>
 </Layout>

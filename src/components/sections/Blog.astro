@@ -1,15 +1,37 @@
 ---
+// Las dos notas del home ahora vienen de Bravo (las 2 más recientes).
+import type { BravoArticle } from "../../lib/bravo";
+import { articleHref } from "../../lib/bravo";
+
 export interface Props {
+  articles: BravoArticle[];
   mainImage?: string;
-  article1Image?: string;
-  article2Image?: string;
 }
 
-const {
-  mainImage = "/images/sosi-blog.png",
-  article1Image = "/images/blog-thumb-1.png",
-  article2Image = "/images/blog-thumb-2.png",
-} = Astro.props;
+const { articles, mainImage = "/images/sosi-blog.png" } = Astro.props;
+
+// El diseño pone en negrita el arranque del título hasta los dos puntos y deja el
+// resto en peso medio. Bravo entrega el título plano, así que el corte se deriva:
+// si no hay dos puntos va todo en negrita, y no se pierde nada.
+function partirTitulo(title: string): [string, string] {
+  const i = title.indexOf(":");
+  return i === -1 ? [title, ""] : [title.slice(0, i + 1), title.slice(i + 1)];
+}
+
+// Coordenadas de cada ranura del maquetado. Se recorren en vez de estar duplicadas,
+// así la sección no se rompe si hay una sola nota publicada.
+const RANURAS = [
+  { thumbTop: "28.64%", tituloTop: "29.11%", descTop: "39.76%", linkTop: "49.70%" },
+  { thumbTop: "61.78%", tituloTop: "61.78%", descTop: "71.24%", linkTop: "82.37%" },
+];
+
+const destacadas = articles.slice(0, RANURAS.length).map((a, i) => ({
+  ...RANURAS[i],
+  href: articleHref(a.slug),
+  image: a.cover_image_url ?? "/images/blog-listado-card-placeholder.png",
+  titulo: partirTitulo(a.title),
+  excerpt: a.excerpt ?? "",
+}));
 ---
 
 <div
@@ -109,131 +131,68 @@ const {
     </a>
   </div>
 
-  <!-- Article 1 thumbnail -->
-  <div
-    class="absolute z-[1] overflow-hidden rounded-[10px]"
-    style="left:47.40%;top:28.64%;width:11.93%;height:27.10%;"
-  >
-    <img
-      src={article1Image}
-      alt=""
-      class="w-full h-full object-cover"
-    />
-  </div>
+  {destacadas.map((nota) => (
+    <Fragment>
+      <!-- Thumbnail -->
+      <div
+        class="absolute z-[1] overflow-hidden rounded-[10px]"
+        style={`left:47.40%;top:${nota.thumbTop};width:11.93%;height:27.10%;`}
+      >
+        <img src={nota.image} alt="" class="w-full h-full object-cover" />
+      </div>
 
-  <!-- Article 1 title -->
-  <p
-    class="absolute z-[2] m-0"
-    style="
-      left:60.78%;
-      top:29.11%;
-      max-width:20.63%;
-      font-family:var(--font-heading);
-      font-weight:500;
-      font-size:clamp(0.875rem,1.04vw,1.25rem);
-      color:var(--color-black);
-      line-height:1.5rem;
-    "
-  >
-    <span style="font-weight:700;">El potencial pesquero de Islay:</span>
-    <span style="font-weight:500;"> Propuestas para fortalecer la economía artesanal</span>
-  </p>
+      <!-- Título -->
+      <p
+        class="absolute z-[2] m-0"
+        style={`
+          left:60.78%;
+          top:${nota.tituloTop};
+          max-width:20.63%;
+          font-family:var(--font-heading);
+          font-weight:500;
+          font-size:clamp(0.875rem,1.04vw,1.25rem);
+          color:var(--color-black);
+          line-height:1.5rem;
+        `}
+      >
+        <span style="font-weight:700;">{nota.titulo[0]}</span>
+        <span style="font-weight:500;">{nota.titulo[1]}</span>
+      </p>
 
-  <!-- Article 1 description -->
-  <p
-    class="absolute z-[2] m-0"
-    style="
-      left:60.78%;
-      top:39.76%;
-      max-width:20.63%;
-      font-family:var(--font-body);
-      font-weight:400;
-      font-size:clamp(0.75rem,0.83vw,1rem);
-      color:var(--color-black);
-      line-height:1.5rem;
-    "
-  >
-    La provincia de Islay alberga uno de los litorales más ricos y productivos del sur del Perú.
-  </p>
+      <!-- Bajada -->
+      <p
+        class="absolute z-[2] m-0"
+        style={`
+          left:60.78%;
+          top:${nota.descTop};
+          max-width:20.63%;
+          font-family:var(--font-body);
+          font-weight:400;
+          font-size:clamp(0.75rem,0.83vw,1rem);
+          color:var(--color-black);
+          line-height:1.5rem;
+        `}
+      >
+        {nota.excerpt}
+      </p>
 
-  <!-- Article 1 "Leer artículo" -->
-  <a
-    href="/blog"
-    class="blog-link absolute z-[2]"
-    style="
-      left:60.78%;
-      top:49.70%;
-      font-family:var(--font-heading);
-      font-weight:500;
-      font-size:clamp(0.875rem,1.04vw,1.25rem);
-      line-height:1;
-    "
-  >
-    Leer artículo
-  </a>
-
-  <!-- Article 2 thumbnail -->
-  <div
-    class="absolute z-[1] overflow-hidden rounded-[10px]"
-    style="left:47.40%;top:61.78%;width:11.93%;height:27.10%;"
-  >
-    <img
-      src={article2Image}
-      alt=""
-      class="w-full h-full object-cover"
-    />
-  </div>
-
-  <!-- Article 2 title -->
-  <p
-    class="absolute z-[2] m-0"
-    style="
-      left:60.78%;
-      top:61.78%;
-      max-width:20.63%;
-      font-family:var(--font-heading);
-      font-weight:500;
-      font-size:clamp(0.875rem,1.04vw,1.25rem);
-      color:var(--color-black);
-      line-height:1.5rem;
-    "
-  >
-    <span style="font-weight:700;">Caminos seguros:</span>
-    <span style="font-weight:500;"> para quienes van a la escuela</span>
-  </p>
-
-  <!-- Article 2 description -->
-  <p
-    class="absolute z-[2] m-0"
-    style="
-      left:60.78%;
-      top:71.24%;
-      max-width:20.63%;
-      font-family:var(--font-body);
-      font-weight:400;
-      font-size:clamp(0.75rem,0.83vw,1rem);
-      color:var(--color-black);
-      line-height:1.5rem;
-    "
-  >
-    Movilidad, alumbrado y espacios públicos: tres decisiones simples que cambian la vida diaria.
-  </p>
-
-  <!-- Article 2 "Leer artículo" -->
-  <a
-    href="/blog"
-    class="blog-link absolute z-[2]"
-    style="
-      left:60.78%;
-      top:82.37%;
-      font-family:var(--font-heading);
-      font-weight:500;
-      font-size:clamp(0.875rem,1.04vw,1.25rem);
-      line-height:1;
-    "
-  >
-    Leer artículo
-  </a>
+      <!-- Leer artículo -->
+      <a
+        href={nota.href}
+        class="blog-link absolute z-[2]"
+        style={`
+          left:60.78%;
+          top:${nota.linkTop};
+          font-family:var(--font-heading);
+          font-weight:500;
+          font-size:clamp(0.875rem,1.04vw,1.25rem);
+          line-height:1;
+        `}
+      >
+        Leer artículo
+      </a>
+    </Fragment>
+  ))}
 </div>
 
 <style>

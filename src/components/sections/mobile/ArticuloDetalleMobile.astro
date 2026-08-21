@@ -1,0 +1,77 @@
+---
+// Detalle de artículo (mobile, 430px). Ver la nota de ArticuloDetalle.astro sobre
+// por qué el cuerpo va en una sola columna.
+import type { BravoArticle } from '../../../lib/bravo';
+import { formatDate, articleHref } from '../../../lib/bravo';
+import { sanitizeHtml } from '../../../lib/sanitizeHtml';
+
+interface Props {
+  article: BravoArticle;
+  recent: BravoArticle[];
+}
+
+const { article, recent } = Astro.props;
+const categoria = article.category ?? 'General';
+const fecha = formatDate(article.published_at);
+const cuerpo = sanitizeHtml(article.body_html ?? '');
+---
+
+<div style="width: 430px; background: #fff;">
+  <!-- Breadcrumb -->
+  <div style="padding: 32px 25px 0 25px; font-family: var(--font-body); font-weight: 700; font-size: 14.1px; line-height: 24.04px;">
+    <a href="/" style="color: rgba(0,0,0,0.5); text-decoration: none;">Inicio</a>
+    <span style="color: #000;"> / </span>
+    <span style="color: rgba(0,0,0,0.5);">{categoria}</span>
+    <span style="color: #000;"> / </span>
+    <span style="color: #000;">{article.title}</span>
+  </div>
+
+  <!-- Article -->
+  <div style="width: 380px; margin: 24px auto 0 auto;">
+    <h1 style="margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: 21.1px; line-height: 1.1; color: #000;">
+      {article.title}
+    </h1>
+
+    <div style="display: flex; align-items: center; gap: 9px; margin-top: 12px;">
+      <div style="display: flex; align-items: center; justify-content: center; min-width: 73px; height: 34px; padding: 0 10px; border-radius: 6px; background: var(--color-red);">
+        <span style="font-family: var(--font-heading); font-weight: 700; font-size: 14px; color: #fff;">{categoria}</span>
+      </div>
+      <span style="font-family: var(--font-heading); font-weight: 600; font-size: 14px; color: rgba(0,0,0,0.5);">{fecha}</span>
+    </div>
+
+    {article.cover_image_url && (
+      <div style="margin-top: 16px; width: 100%; aspect-ratio: 356.56 / 267.42; border-radius: 6px; overflow: hidden;">
+        <img src={article.cover_image_url} alt={article.title} style="width: 100%; height: 100%; object-fit: cover;" />
+      </div>
+    )}
+
+    <div class="bravo-prose" style="--prose-size: 14.1px; --prose-lh: 24.04px; margin-top: 16px;" set:html={cuerpo} />
+
+    <div style="display: flex; align-items: center; gap: 15px; margin-top: 29px; padding-bottom: 12px; border-bottom: 2px solid var(--color-red);">
+      <span style="font-family: var(--font-body); font-size: 14.1px; color: #000;">Compartir:</span>
+      <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(Astro.url.href)}`} target="_blank" rel="noopener noreferrer" aria-label="Compartir en Facebook"><img src="/images/icons/share-facebook.svg" alt="" style="width: 12px; height: 12px;" /></a>
+      <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(Astro.url.href)}&text=${encodeURIComponent(article.title)}`} target="_blank" rel="noopener noreferrer" aria-label="Compartir en X"><img src="/images/icons/share-x.svg" alt="" style="width: 13px; height: 12px;" /></a>
+      <a href={`https://t.me/share/url?url=${encodeURIComponent(Astro.url.href)}&text=${encodeURIComponent(article.title)}`} target="_blank" rel="noopener noreferrer" aria-label="Compartir en Telegram"><img src="/images/icons/share-telegram.svg" alt="" style="width: 13px; height: 11px;" /></a>
+    </div>
+
+    <!-- Post recientes -->
+    {recent.length > 0 && (
+      <div style="margin-top: 29px; padding-bottom: 60px;">
+        <p style="margin: 0 0 15px 0; font-family: var(--font-heading); font-weight: 700; font-size: 21.3px; color: var(--color-black);">Post Recientes</p>
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+          {recent.map((post) => (
+            <a href={articleHref(post.slug)} style="display: flex; gap: 20px; align-items: flex-start; text-decoration: none;">
+              <div style="width: 100px; height: 100px; border-radius: 8px; overflow: hidden; flex-shrink: 0;">
+                <img src={post.cover_image_url ?? '/images/mobile/blog-listado-card-placeholder.png'} alt="" style="width: 100%; height: 100%; object-fit: cover;" />
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 4px; padding-top: 2px;">
+                <p style="margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: 16px; line-height: 20.8px; color: var(--color-black);">{post.title}</p>
+                <p style="margin: 0; font-family: var(--font-body); font-weight: 400; font-size: 12.4px; color: rgba(18,24,34,0.6);">{formatDate(post.published_at)}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</div>

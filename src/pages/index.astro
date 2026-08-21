@@ -33,6 +33,11 @@ import GaleriaMobile from "../components/sections/mobile/GaleriaMobile.astro";
 import BlogMobile from "../components/sections/mobile/BlogMobile.astro";
 import CTAMobile from "../components/sections/mobile/CTAMobile.astro";
 import ContactoMobile from "../components/sections/mobile/ContactoMobile.astro";
+import { fetchArticles } from "../lib/bravo";
+
+// Un solo fetch para las tres versiones del home. Si Bravo no responde esto tira, y el
+// build falla a propósito: deploy.yml usa rsync --delete.
+const articles = await fetchArticles();
 ---
 
 <Layout
@@ -50,7 +55,7 @@ import ContactoMobile from "../components/sections/mobile/ContactoMobile.astro";
       <Stats />
       <Biografia />
       <Galeria />
-      <Blog />
+      <Blog articles={articles} />
       <CTA />
       <Contacto />
     </main>
@@ -67,7 +72,7 @@ import ContactoMobile from "../components/sections/mobile/ContactoMobile.astro";
       <StatsLaptop />
       <BiografiaLaptop />
       <GaleriaLaptop />
-      <BlogLaptop />
+      <BlogLaptop articles={articles} />
       <CTALaptop />
       <ContactoLaptop />
     </main>
@@ -84,7 +89,7 @@ import ContactoMobile from "../components/sections/mobile/ContactoMobile.astro";
       <StatsMobile />
       <BiografiaMobile />
       <GaleriaMobile />
-      <BlogMobile />
+      <BlogMobile articles={articles} />
       <CTAMobile />
       <ContactoMobile />
     </main>

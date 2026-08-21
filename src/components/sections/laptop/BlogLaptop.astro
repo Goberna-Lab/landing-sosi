@@ -1,4 +1,32 @@
 ---
+// Las dos notas del home ahora vienen de Bravo (las 2 más recientes).
+// Ver la nota de Blog.astro sobre el corte del título en los dos puntos.
+import type { BravoArticle } from "../../../lib/bravo";
+import { articleHref } from "../../../lib/bravo";
+
+export interface Props {
+  articles: BravoArticle[];
+}
+
+const { articles } = Astro.props;
+
+function partirTitulo(title: string): [string, string] {
+  const i = title.indexOf(":");
+  return i === -1 ? [title, ""] : [title.slice(0, i + 1), title.slice(i + 1)];
+}
+
+const RANURAS = [
+  { thumbTop: "211px", tituloTop: "214px", descTop: "293px", linkTop: "366px" },
+  { thumbTop: "456px", tituloTop: "456px", descTop: "525px", linkTop: "608px" },
+];
+
+const destacadas = articles.slice(0, RANURAS.length).map((a, i) => ({
+  ...RANURAS[i],
+  href: articleHref(a.slug),
+  image: a.cover_image_url ?? "/images/laptop/blog-listado-card-placeholder.png",
+  titulo: partirTitulo(a.title),
+  excerpt: a.excerpt ?? "",
+}));
 ---
 
 <div style="position: relative; width: 1366px; height: 736px; background: #f5f7fa;">
@@ -30,39 +58,22 @@
     <a href="/blog" class="blog-link-laptop blog-link-laptop-on-dark" style="position: absolute; right: 36px; bottom: 55px; font-family: var(--font-heading); font-weight: 500; font-size: 18px; margin: 0;">Leer artículo</a>
   </div>
 
-  <!-- Article 1 thumbnail -->
-  <div style="position: absolute; left: 701px; top: 211px; width: 200px; height: 200px; border-radius: 10px; overflow: hidden;">
-    <img src="/images/laptop/blog-thumb-1.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;" />
-  </div>
+  {destacadas.map((nota) => (
+    <Fragment>
+      <div style={`position: absolute; left: 701px; top: ${nota.thumbTop}; width: 200px; height: 200px; border-radius: 10px; overflow: hidden;`}>
+        <img src={nota.image} alt="" style="width: 100%; height: 100%; object-fit: cover;" />
+      </div>
 
-  <!-- Article 1 title -->
-  <p style="position: absolute; left: 926px; top: 214px; width: 346px; font-family: var(--font-heading); font-size: 20px; line-height: 24px; margin: 0;">
-    <span style="font-weight: 700; color: #121822;">El potencial pesquero de Islay: </span>
-    <span style="font-weight: 500; color: #121822;">Propuestas para fortalecer la economía artesanal</span>
-  </p>
+      <p style={`position: absolute; left: 926px; top: ${nota.tituloTop}; width: 346px; font-family: var(--font-heading); font-size: 20px; line-height: 24px; margin: 0;`}>
+        <span style="font-weight: 700; color: #121822;">{nota.titulo[0]}</span>
+        <span style="font-weight: 500; color: #121822;">{nota.titulo[1]}</span>
+      </p>
 
-  <!-- Article 1 description -->
-  <p style="position: absolute; left: 926px; top: 293px; width: 346px; font-size: 16px; font-weight: 400; color: #121822; line-height: 24px; margin: 0;">La provincia de Islay alberga uno de los litorales más ricos y productivos del sur del Perú.</p>
+      <p style={`position: absolute; left: 926px; top: ${nota.descTop}; width: 346px; font-size: 16px; font-weight: 400; color: #121822; line-height: 24px; margin: 0;`}>{nota.excerpt}</p>
 
-  <!-- Article 1 link -->
-  <a href="/blog" class="blog-link-laptop" style="position: absolute; left: 926px; top: 366px; font-family: var(--font-heading); font-weight: 500; font-size: 18px; margin: 0;">Leer artículo</a>
-
-  <!-- Article 2 thumbnail -->
-  <div style="position: absolute; left: 701px; top: 456px; width: 200px; height: 200px; border-radius: 10px; overflow: hidden;">
-    <img src="/images/laptop/blog-thumb-2.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;" />
-  </div>
-
-  <!-- Article 2 title -->
-  <p style="position: absolute; left: 926px; top: 456px; width: 346px; font-family: var(--font-heading); font-size: 20px; line-height: 24px; margin: 0;">
-    <span style="font-weight: 700; color: #121822;">Caminos seguros: </span>
-    <span style="font-weight: 500; color: #121822;">para quienes van a la escuela</span>
-  </p>
-
-  <!-- Article 2 description -->
-  <p style="position: absolute; left: 926px; top: 525px; width: 346px; font-size: 16px; font-weight: 400; color: #121822; line-height: 24px; margin: 0;">Movilidad, alumbrado y espacios públicos: tres decisiones simples que cambian la vida diaria.</p>
-
-  <!-- Article 2 link -->
-  <a href="/blog" class="blog-link-laptop" style="position: absolute; left: 926px; top: 608px; font-family: var(--font-heading); font-weight: 500; font-size: 18px; margin: 0;">Leer artículo</a>
+      <a href={nota.href} class="blog-link-laptop" style={`position: absolute; left: 926px; top: ${nota.linkTop}; font-family: var(--font-heading); font-weight: 500; font-size: 18px; margin: 0;`}>Leer artículo</a>
+    </Fragment>
+  ))}
 </div>
 
 <style>

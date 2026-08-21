@@ -1,63 +1,24 @@
 ---
-interface Article {
-  image: string;
-  category: string;
-  date: string;
-  title: string;
-  description: string;
-  href: string;
+// Las notas ahora salen del panel de Bravo. Las 6 que estaban acá escritas a mano
+// (4 de ellas lorem ipsum) se fueron: la real se migró al panel y las de relleno
+// desaparecen solas cuando la lista viene de la API.
+import type { BravoArticle } from "../../../lib/bravo";
+import { formatDate, articleHref } from "../../../lib/bravo";
+
+interface Props {
+  articles: BravoArticle[];
 }
 
-const articles: Article[] = [
-  {
-    image: "/images/laptop/blog-thumb-1.jpg",
-    category: "General",
-    date: "19/05/2026",
-    title: "El potencial pesquero de Islay: Propuestas para fortalecer la economía artesanal",
-    description: "La provincia de Islay alberga uno de los litorales más ricos y productivos del sur del Perú.",
-    href: "/blog/potencial-pesquero-de-islay",
-  },
-  {
-    image: "/images/laptop/blog-thumb-2.jpg",
-    category: "General",
-    date: "19/05/2026",
-    title: "Caminos seguros para quienes van a la escuela",
-    description: "Movilidad, alumbrado y espacios públicos: tres decisiones simples que cambian la vida diaria.",
-    href: "#",
-  },
-  {
-    image: "/images/mobile/blog-listado-card-placeholder.png",
-    category: "General",
-    date: "19/05/2026",
-    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
-    href: "#",
-  },
-  {
-    image: "/images/mobile/blog-listado-card-placeholder.png",
-    category: "General",
-    date: "19/05/2026",
-    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
-    href: "#",
-  },
-  {
-    image: "/images/mobile/blog-listado-card-placeholder.png",
-    category: "General",
-    date: "19/05/2026",
-    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
-    href: "#",
-  },
-  {
-    image: "/images/mobile/blog-listado-card-placeholder.png",
-    category: "General",
-    date: "19/05/2026",
-    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
-    href: "#",
-  },
-];
+const { articles: source } = Astro.props;
+
+const articles = source.map((a) => ({
+  image: a.cover_image_url ?? "/images/mobile/blog-listado-card-placeholder.png",
+  category: a.category ?? "General",
+  date: formatDate(a.published_at),
+  title: a.title,
+  description: a.excerpt ?? "",
+  href: articleHref(a.slug),
+}));
 ---
 
 <div style="width: 430px; background: #fff;">

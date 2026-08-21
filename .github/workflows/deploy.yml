@@ -30,6 +30,20 @@ jobs:
         run: |
           set -euo pipefail
           DOCROOT=/home/sosiaspilcueta/web/sosiaspilcueta.com/public_html
-          [ -n "$(find dist -mindepth 1 -type f -print -quit)" ] || { echo "::error::dist/ vacio -> abort"; exit 1; }
+
+          # El rsync va con --delete: lo que no esté en dist/ se BORRA del servidor.
+          # Por eso no alcanza con "dist/ no está vacía" — los assets de public/ se
+          # copian antes de generar las páginas, así que una build a medias deja dist/
+          # con cientos de archivos y ni un HTML. Verificamos las páginas de verdad.
+          [ -f dist/index.html ]      || { echo "::error::falta dist/index.html -> abort"; exit 1; }
+          [ -f dist/blog/index.html ] || { echo "::error::falta dist/blog/index.html -> abort"; exit 1; }
+          [ -f dist/panel/index.html ] || { echo "::error::falta dist/panel/index.html -> abort"; exit 1; }
+
+          # Al menos un artículo: las notas salen de Bravo en tiempo de build, y un
+          # deploy sin ninguna dejaría todas las URLs vivas en 404 con el CI en verde.
+          ARTICULOS=$(find dist/blog -mindepth 2 -name index.html | wc -l)
+          [ "$ARTICULOS" -ge 1 ] || { echo "::error::0 articulos generados desde Bravo -> abort"; exit 1; }
+          echo "guard OK: $ARTICULOS articulo(s)"
+
           sudo rsync -rl --delete --chmod=D755,F644 dist/ "$DOCROOT/"
           echo "deploy OK -> $DOCROOT"
