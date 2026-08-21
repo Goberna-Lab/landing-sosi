@@ -1,63 +1,24 @@
 ---
-interface Article {
-  image: string;
-  category: string;
-  date: string;
-  title: string;
-  description: string;
-  href: string;
+// Las notas ahora salen del panel de Bravo. Las 6 que estaban acá escritas a mano
+// (4 de ellas lorem ipsum) se fueron: la real se migró al panel y las de relleno
+// desaparecen solas cuando la lista viene de la API.
+import type { BravoArticle } from "../../lib/bravo";
+import { formatDate, articleHref } from "../../lib/bravo";
+
+interface Props {
+  articles: BravoArticle[];
 }
 
-const articles: Article[] = [
-  {
-    image: "/images/blog-thumb-1.png",
-    category: "General",
-    date: "19/05/2026",
-    title: "El potencial pesquero de Islay: Propuestas para fortalecer la economía artesanal",
-    description: "La provincia de Islay alberga uno de los litorales más ricos y productivos del sur del Perú.",
-    href: "/blog/potencial-pesquero-de-islay",
-  },
-  {
-    image: "/images/blog-thumb-2.png",
-    category: "General",
-    date: "19/05/2026",
-    title: "Caminos seguros para quienes van a la escuela",
-    description: "Movilidad, alumbrado y espacios públicos: tres decisiones simples que cambian la vida diaria.",
-    href: "#",
-  },
-  {
-    image: "/images/blog-listado-card-placeholder.png",
-    category: "General",
-    date: "19/05/2026",
-    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
-    href: "#",
-  },
-  {
-    image: "/images/blog-listado-card-placeholder.png",
-    category: "General",
-    date: "19/05/2026",
-    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
-    href: "#",
-  },
-  {
-    image: "/images/blog-listado-card-placeholder.png",
-    category: "General",
-    date: "19/05/2026",
-    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
-    href: "#",
-  },
-  {
-    image: "/images/blog-listado-card-placeholder.png",
-    category: "General",
-    date: "19/05/2026",
-    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
-    href: "#",
-  },
-];
+const { articles: source } = Astro.props;
+
+const articles = source.map((a) => ({
+  image: a.cover_image_url ?? "/images/blog-listado-card-placeholder.png",
+  category: a.category ?? "General",
+  date: formatDate(a.published_at),
+  title: a.title,
+  description: a.excerpt ?? "",
+  href: articleHref(a.slug),
+}));
 ---
 
 <div style="position: relative; width: 1920px; background: #fff;">
@@ -85,6 +46,12 @@ const articles: Article[] = [
       <span style="color: var(--color-black);">Blog</span>
     </div>
 
+    {articles.length === 0 && (
+      <p style="margin: 0; font-family: var(--font-body); font-size: 16px; color: rgba(18,24,34,0.5);">
+        Todavía no hay notas publicadas.
+      </p>
+    )}
+
     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px;">
       {articles.map((article) => (
         <a href={article.href} class="blog-card-link" style="display: block; text-decoration: none;">
@@ -92,7 +59,7 @@ const articles: Article[] = [
             <img src={article.image} alt="" style="width: 100%; height: 100%; object-fit: cover;" />
           </div>
           <div style="display: flex; align-items: center; gap: 10px; margin-top: 20px;">
-            <div style="display: flex; align-items: center; justify-content: center; width: 78px; height: 34px; border-radius: 8px; background: var(--color-red);">
+            <div style="display: flex; align-items: center; justify-content: center; min-width: 78px; height: 34px; padding: 0 12px; border-radius: 8px; background: var(--color-red);">
               <span style="font-family: var(--font-heading); font-weight: 700; font-size: 14px; color: #fff;">{article.category}</span>
             </div>
             <span style="font-family: var(--font-heading); font-weight: 600; font-size: 14px; line-height: 23.8px; color: rgba(18,24,34,0.5);">{article.date}</span>

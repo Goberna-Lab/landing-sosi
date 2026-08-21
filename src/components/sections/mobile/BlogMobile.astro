@@ -1,4 +1,41 @@
 ---
+// El carrusel arranca con la diapositiva de bio (fija, no es una nota) y sigue con las
+// notas publicadas en Bravo. Antes las notas estaban escritas a mano en el array de JS.
+//
+// Los datos viajan al script del cliente por un <script type="application/json">: el
+// script de abajo es un módulo TypeScript y no puede leer el frontmatter directo.
+import type { BravoArticle } from "../../../lib/bravo";
+import { articleHref } from "../../../lib/bravo";
+
+export interface Props {
+  articles: BravoArticle[];
+}
+
+const { articles } = Astro.props;
+
+const SLIDE_BIO = {
+  badge: "ENE",
+  photo: "/images/mobile/blog-featured-mobile.png",
+  title: "Conoce más sobre mí",
+  date: "30 DE JULIO 2026",
+  description:
+    "Soy Sosi Aspilcueta, nací el 20 de enero de 1986 en Mejía, un encantador distrito ubicado en Arequipa, Perú.",
+  readMore: "Leer nota completa",
+  href: "/blog",
+};
+
+const slides = [
+  SLIDE_BIO,
+  ...articles.slice(0, 3).map((a) => ({
+    badge: null,
+    photo: a.cover_image_url ?? "/images/mobile/blog-listado-card-placeholder.png",
+    title: a.title,
+    date: null,
+    description: a.excerpt ?? "",
+    readMore: "Leer artículo",
+    href: articleHref(a.slug),
+  })),
+];
 ---
 
 <div style="position: relative; width: 430px; height: 730px; background: #f5f7fa;">
@@ -38,13 +75,19 @@
   <!-- Read more link -->
   <a id="blog-readmore-mobile" href="/blog" style="position: absolute; left: 55px; top: 611px; font-size: 14px; font-weight: 400; color: #e74942; margin: 0; cursor: pointer; text-decoration: none;">Leer nota completa</a>
 
-  <!-- Carousel dots -->
-  <div style="position: absolute; left: 185px; top: 653px; display: flex; gap: 8px;">
-    <div class="blog-dot-mobile" data-index="0" style="width: 9px; height: 9px; background: #d70202; border-radius: 50%; cursor: pointer;"></div>
-    <div class="blog-dot-mobile" data-index="1" style="width: 9px; height: 9px; background: #cecece; border-radius: 50%; cursor: pointer;"></div>
-    <div class="blog-dot-mobile" data-index="2" style="width: 9px; height: 9px; background: #cecece; border-radius: 50%; cursor: pointer;"></div>
+  <!-- Carousel dots: uno por diapositiva, que ahora dependen de cuántas notas haya -->
+  <div style="position: absolute; left: 0; right: 0; top: 653px; display: flex; justify-content: center; gap: 8px;">
+    {slides.map((_, i) => (
+      <div
+        class="blog-dot-mobile"
+        data-index={i}
+        style={`width: 9px; height: 9px; background: ${i === 0 ? "#d70202" : "#cecece"}; border-radius: 50%; cursor: pointer;`}
+      ></div>
+    ))}
   </div>
 </div>
+
+<script type="application/json" id="blog-data-mobile" set:html={JSON.stringify(slides)}></script>
 
 <style>
   @keyframes blog-fade-mobile-anim { from { opacity: 0; } to { opacity: 1; } }
@@ -66,35 +109,22 @@
 </style>
 
 <script>
-  const BLOG_DATA_MOBILE = [
-    {
-      badge: "ENE",
-      photo: "/images/mobile/blog-featured-mobile.png",
-      title: "Conoce más sobre mí",
-      date: "30 DE JULIO 2026",
-      description: "Soy Sosi Aspilcueta, nací el 20 de enero de 1986 en Mejía, un encantador distrito ubicado en Arequipa, Perú.",
-      readMore: "Leer nota completa",
-      href: "/blog",
-    },
-    {
-      badge: null,
-      photo: "/images/laptop/blog-thumb-1.jpg",
-      title: "El potencial pesquero de Islay",
-      date: null,
-      description: "La provincia de Islay alberga uno de los litorales más ricos y productivos del sur del Perú.",
-      readMore: "Leer artículo",
-      href: "/blog/potencial-pesquero-de-islay",
-    },
-    {
-      badge: null,
-      photo: "/images/laptop/blog-thumb-2.jpg",
-      title: "Caminos seguros para quienes van a la escuela",
-      date: null,
-      description: "Movilidad, alumbrado y espacios públicos: tres decisiones simples que cambian la vida diaria.",
-      readMore: "Leer artículo",
-      href: "/blog",
-    },
-  ];
+  interface BlogSlideMobile {
+    badge: string | null;
+    photo: string;
+    title: string;
+    date: string | null;
+    description: string;
+    readMore: string;
+    href: string;
+  }
+
+  // Las diapositivas las arma el frontmatter desde Bravo y viajan en el <script
+  // type="application/json"> de arriba.
+  const dataEl = document.getElementById("blog-data-mobile");
+  const BLOG_DATA_MOBILE: BlogSlideMobile[] = dataEl?.textContent
+    ? JSON.parse(dataEl.textContent)
+    : [];
 
   let blogIndexMobile = 0;
 
@@ -116,6 +146,7 @@
 
   function renderBlogMobile() {
     const data = BLOG_DATA_MOBILE[blogIndexMobile];
+    if (!data) return;
 
     if (photoEl) photoEl.src = data.photo;
     if (badgeEl) {
@@ -143,6 +174,7 @@
   }
 
   function goToBlogMobile(index: number) {
+    if (BLOG_DATA_MOBILE.length === 0) return;
     blogIndexMobile = (index + BLOG_DATA_MOBILE.length) % BLOG_DATA_MOBILE.length;
     renderBlogMobile();
   }
@@ -153,7 +185,8 @@
     dot.addEventListener("click", () => goToBlogMobile(Number(dot.getAttribute("data-index"))));
   });
 
-  if (cardEl) cardEl.dataset.href = BLOG_DATA_MOBILE[blogIndexMobile].href;
+  // Pinta la primera diapositiva ya con los datos de Bravo (el HTML trae la de bio).
+  renderBlogMobile();
 
   cardEl?.addEventListener("click", () => {
     const href = cardEl.dataset.href;

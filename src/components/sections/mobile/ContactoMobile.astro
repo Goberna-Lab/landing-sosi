@@ -22,41 +22,66 @@
   <p style="position: absolute; left: 32px; top: 295px; width: 371px; font-size: 16px; font-weight: 400; color: #121822; line-height: 24px; margin: 0;">Es momento de renovar la política con vocación de servicio y trabajo real. Suma tu voz a esta causa: escríbeme y transformemos la realidad de Mejía juntos.</p>
 
   <!-- Contact form card -->
-  <div id="formulario-mobile" style="position: absolute; left: 16px; top: 503px; width: 398px; height: 649px; background: #fff; border-radius: 10px; box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16); padding: 40px 16px;">
+  <!-- La altura fija de 649px se saca a propósito: con el mensaje de estado la tarjeta
+       tiene que poder crecer. El alto de la sección (1224px) deja lugar de sobra. -->
+  <form data-bravo-contact id="formulario-mobile" style="position: absolute; left: 16px; top: 503px; width: 398px; background: #fff; border-radius: 10px; box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16); padding: 40px 16px;">
+
+    <p class="bravo-hp" aria-hidden="true">
+      <label>No completes este campo<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+    </p>
 
     <!-- NOMBRES -->
-    <p style="font-family: var(--font-heading); font-size: 13px; font-weight: 500; color: #1b1f28; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px 0;">NOMBRES</p>
-    <p style="font-size: 14px; font-weight: 400; color: rgba(27,31,40,0.6); letter-spacing: 0.08em; margin: 0 0 8px 0;">Tu nombre</p>
-    <div style="width: 100%; height: 1px; background: #C0C1C7; margin-bottom: 24px;"></div>
+    <label for="cm-nombre" style="display: block; font-family: var(--font-heading); font-size: 13px; font-weight: 500; color: #1b1f28; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px 0;">NOMBRES</label>
+    <input id="cm-nombre" class="bravo-field" type="text" name="name" required maxlength="200" autocomplete="name" placeholder="Tu nombre"
+      style="font-size: 14px; font-weight: 400; letter-spacing: 0.08em; margin: 0 0 8px 0;" />
+    <div class="bravo-line" style="width: 100%; height: 1px; background: #C0C1C7; margin-bottom: 24px;"></div>
 
     <!-- CORREO -->
-    <p style="font-family: var(--font-heading); font-size: 13px; font-weight: 500; color: #1b1f28; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px 0;">CORREO</p>
-    <p style="font-size: 14px; font-weight: 400; color: rgba(27,31,40,0.6); letter-spacing: 0.08em; margin: 0 0 8px 0;">correo@gmail.com</p>
-    <div style="width: 100%; height: 1px; background: #C0C1C7; margin-bottom: 24px;"></div>
+    <label for="cm-correo" style="display: block; font-family: var(--font-heading); font-size: 13px; font-weight: 500; color: #1b1f28; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px 0;">CORREO</label>
+    <input id="cm-correo" class="bravo-field" type="email" name="email" required maxlength="200" autocomplete="email" placeholder="correo@gmail.com"
+      style="font-size: 14px; font-weight: 400; letter-spacing: 0.08em; margin: 0 0 8px 0;" />
+    <div class="bravo-line" style="width: 100%; height: 1px; background: #C0C1C7; margin-bottom: 24px;"></div>
 
     <!-- DISTRITO O SECTOR -->
-    <p style="font-family: var(--font-heading); font-size: 13px; font-weight: 500; color: #1b1f28; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px 0;">DISTRITO O SECTOR</p>
-    <p style="font-size: 14px; font-weight: 400; color: rgba(27,31,40,0.6); letter-spacing: 0.08em; margin: 0 0 8px 0;">ej: Mejía, Deán Valdivia</p>
-    <div style="width: 100%; height: 1px; background: #C0C1C7; margin-bottom: 24px;"></div>
+    <label for="cm-distrito" style="display: block; font-family: var(--font-heading); font-size: 13px; font-weight: 500; color: #1b1f28; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px 0;">DISTRITO O SECTOR</label>
+    <input id="cm-distrito" class="bravo-field" type="text" name="distrito" maxlength="120" placeholder="ej: Mejía, Deán Valdivia"
+      style="font-size: 14px; font-weight: 400; letter-spacing: 0.08em; margin: 0 0 8px 0;" />
+    <div class="bravo-line" style="width: 100%; height: 1px; background: #C0C1C7; margin-bottom: 24px;"></div>
 
     <!-- TELÉFONO -->
-    <p style="font-family: var(--font-heading); font-size: 13px; font-weight: 500; color: #1b1f28; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px 0;">TELÉFONO</p>
-    <p style="font-size: 14px; font-weight: 400; color: rgba(27,31,40,0.6); letter-spacing: 0.08em; margin: 0 0 8px 0;">+51 000 000 000</p>
-    <div style="width: 100%; height: 1px; background: #C0C1C7; margin-bottom: 24px;"></div>
+    <label for="cm-telefono" style="display: block; font-family: var(--font-heading); font-size: 13px; font-weight: 500; color: #1b1f28; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px 0;">TELÉFONO</label>
+    <input id="cm-telefono" class="bravo-field" type="tel" name="phone" maxlength="50" autocomplete="tel" placeholder="+51 000 000 000"
+      style="font-size: 14px; font-weight: 400; letter-spacing: 0.08em; margin: 0 0 8px 0;" />
+    <div class="bravo-line" style="width: 100%; height: 1px; background: #C0C1C7; margin-bottom: 24px;"></div>
 
     <!-- MOTIVO DEL MENSAJE -->
-    <p style="font-family: var(--font-heading); font-size: 13px; font-weight: 500; color: #1b1f28; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px 0;">MOTIVO DEL MENSAJE</p>
-    <p style="font-size: 14px; font-weight: 400; color: #1b1f28; letter-spacing: 0.08em; margin: 0 0 8px 0;">Seleccione</p>
-    <div style="width: 100%; height: 1px; background: #C0C1C7; margin-bottom: 24px;"></div>
+    <label for="cm-motivo" style="display: block; font-family: var(--font-heading); font-size: 13px; font-weight: 500; color: #1b1f28; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px 0;">MOTIVO DEL MENSAJE</label>
+    <select id="cm-motivo" class="bravo-field" name="motivo"
+      style="font-size: 14px; font-weight: 400; letter-spacing: 0.08em; margin: 0 0 8px 0;">
+      <option value="">Seleccione</option>
+      <option value="Quiero ser voluntario/a">Quiero ser voluntario/a</option>
+      <option value="Tengo una propuesta o idea">Tengo una propuesta o idea</option>
+      <option value="Quiero reportar un problema">Quiero reportar un problema</option>
+      <option value="Prensa">Prensa</option>
+      <option value="Otro">Otro</option>
+    </select>
+    <div class="bravo-line" style="width: 100%; height: 1px; background: #C0C1C7; margin-bottom: 24px;"></div>
 
     <!-- Mensaje opcional -->
-    <p style="font-family: var(--font-heading); font-size: 13px; font-weight: 500; color: #1b1f28; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px 0;">Mensaje opcional</p>
-    <p style="font-size: 14px; font-weight: 400; color: rgba(27,31,40,0.6); letter-spacing: 0.08em; margin: 0 0 16px 0;">Cuéntanos cómo te gustaría sumarte</p>
-    <div style="width: 100%; height: 1px; background: #C0C1C7; margin-bottom: 24px;"></div>
+    <label for="cm-mensaje" style="display: block; font-family: var(--font-heading); font-size: 13px; font-weight: 500; color: #1b1f28; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px 0;">Mensaje opcional</label>
+    <textarea id="cm-mensaje" class="bravo-field" name="message" maxlength="5000" rows="2" placeholder="Cuéntanos cómo te gustaría sumarte"
+      style="font-size: 14px; font-weight: 400; letter-spacing: 0.08em; margin: 0 0 16px 0;"></textarea>
+    <div class="bravo-line" style="width: 100%; height: 1px; background: #C0C1C7; margin-bottom: 24px;"></div>
 
     <!-- Submit button -->
-    <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 60px; background: #d70202; border-radius: 6px; cursor: pointer;">
-      <span style="font-size: 14px; color: #fff; text-transform: uppercase;">QUIERO SUMARME</span>
-    </div>
-  </div>
+    <button type="submit" data-bravo-submit class="bravo-submit" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 60px; background: #d70202; border-radius: 6px;">
+      <span data-bravo-submit-label style="font-size: 14px; color: #fff; text-transform: uppercase;">QUIERO SUMARME</span>
+    </button>
+
+    <p class="bravo-status" data-bravo-status role="status" aria-live="polite" style="font-size: 14px; margin: 16px 0 0 0;"></p>
+  </form>
 </div>
+
+<script>
+  import '../../../scripts/contact';
+</script>

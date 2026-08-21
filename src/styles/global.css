@@ -208,3 +208,162 @@ button:hover .btn-arrow {
 .blog-card-link:hover .blog-leer-mas::after {
   width: 100%;
 }
+
+/* ---------------------------------------------------------------------------
+   Formulario de contacto (Bravo)
+
+   Los campos van encima del diseño existente: el <input> es transparente y sin
+   borde, y la "línea" del campo sigue siendo el div de 1px que ya estaba en el
+   maquetado. Así el formulario queda funcional sin mover un pixel del diseño.
+   Compartido por las tres versiones (desktop / laptop / mobile).
+--------------------------------------------------------------------------- */
+.bravo-field {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: #1b1f28;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  appearance: none;
+  border-radius: 0;
+}
+
+.bravo-field::placeholder {
+  color: rgba(27, 31, 40, 0.6);
+  opacity: 1;
+}
+
+/* El foco se marca en la línea de abajo, no con un contorno alrededor del input:
+   el diseño no tiene caja, solo el subrayado. */
+.bravo-field:focus-visible + .bravo-line,
+.bravo-field:focus-visible ~ .bravo-line {
+  background: var(--color-red);
+}
+
+.bravo-field:user-invalid ~ .bravo-line {
+  background: var(--color-red);
+}
+
+textarea.bravo-field {
+  resize: none;
+}
+
+/* Honeypot: los bots lo completan, las personas no lo ven. No usamos display:none
+   porque algunos bots lo detectan y lo saltean. */
+.bravo-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bravo-status {
+  display: none;
+  font-family: var(--font-body);
+  line-height: 1.35;
+}
+
+.bravo-submit {
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+.bravo-submit:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* ---------------------------------------------------------------------------
+   Cuerpo del artículo que viene de Bravo
+
+   El panel entrega UN bloque de HTML, así que el detalle del artículo no puede
+   reproducir maquetados a medida (como el de dos columnas con foto al costado que
+   tenía la nota de Islay hecha a mano). Esto le da estilo a lo que sanitizeArticleBody
+   permite: h2/h3/h4, p/br/hr, strong/em/u/s, ul/ol/li, blockquote, a, img,
+   figure/figcaption, code/pre.
+
+   El tamaño lo fija cada versión con --prose-size / --prose-lh.
+--------------------------------------------------------------------------- */
+.bravo-prose {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--prose-size, 16px);
+  line-height: var(--prose-lh, 27.2px);
+  color: var(--color-black);
+}
+
+.bravo-prose > * + * {
+  margin-top: 1.2em;
+}
+
+.bravo-prose h2,
+.bravo-prose h3,
+.bravo-prose h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-black);
+  margin-top: 1.6em;
+}
+
+.bravo-prose h2 { font-size: 1.5em; }
+.bravo-prose h3 { font-size: 1.25em; }
+.bravo-prose h4 { font-size: 1.1em; }
+
+.bravo-prose a {
+  color: var(--color-red);
+  text-decoration: underline;
+}
+
+.bravo-prose ul,
+.bravo-prose ol {
+  padding-left: 1.4em;
+}
+
+.bravo-prose ul { list-style: disc; }
+.bravo-prose ol { list-style: decimal; }
+.bravo-prose li + li { margin-top: 0.4em; }
+
+.bravo-prose blockquote {
+  padding-left: 1em;
+  border-left: 3px solid var(--color-red);
+  font-style: italic;
+}
+
+.bravo-prose img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.bravo-prose figcaption {
+  margin-top: 0.5em;
+  font-size: 0.85em;
+  color: rgba(18, 24, 34, 0.6);
+}
+
+.bravo-prose hr {
+  border: 0;
+  border-top: 1px solid var(--color-gray-border);
+}
+
+.bravo-prose pre {
+  padding: 1em;
+  overflow-x: auto;
+  background: var(--color-gray-bg);
+  border-radius: 8px;
+}
+
+.bravo-prose code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+}

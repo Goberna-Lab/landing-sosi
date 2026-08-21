@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Panel — Sosi Aspilcueta</title>
+  </head>
+  <body>
+    <!--
+      Shell pelado del panel de Bravo. Tres cosas que NO son opcionales:
+
+      1. Vive en public/, no en src/. Astro copia public/ tal cual, sin pasarle el
+         global.css de la landing: el bundle trae su propio Tailwind y el CSS
+         dark-first del sitio le rompe el layout. Además, estando acá la carpeta
+         /panel/ existe de verdad en el build — que es justo lo que hace falta
+         porque el sitio no tiene fallback de SPA (una ruta inexistente da 404).
+      2. El div tiene que ser id="bravo-admin". Es el mount point exacto que busca
+         el bundle; con otro id no monta nada y solo loguea un error en consola.
+      3. window.__BRAVO__ tiene que existir ANTES de que cargue el bundle, por eso
+         los scripts van en este orden y sin type="module".
+
+      El tenant está escrito a mano acá porque public/ no pasa por el build de Astro
+      y no puede importar src/config/bravo.ts. Es el ÚNICO lugar fuera de ese archivo
+      donde aparece el slug — si cambia, hay que tocar los dos.
+
+      El tenant del __BRAVO__ es solo para mostrar: el aislamiento real lo da el JWT,
+      que lleva el tenant_id. Que esta URL sea pública no expone nada — sin
+      credenciales solo se ve el login.
+    -->
+    <div id="bravo-admin"></div>
+    <script>
+      window.__BRAVO__ = {
+        tenant: 'sosiaspilcueta',
+        apiUrl: 'https://bravo.goberna.us',
+        siteUrl: 'https://sosiaspilcueta.com',
+        panelBundleUrl: 'https://bravo.goberna.us/bravo-admin.umd.js',
+      };
+    </script>
+    <script src="https://bravo.goberna.us/bravo-admin.umd.js"></script>
+  </body>
+</html>

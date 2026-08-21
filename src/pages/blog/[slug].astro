@@ -1,0 +1,81 @@
+---
+// Una página por artículo publicado en Bravo, generada en tiempo de build.
+//
+// Reemplaza a potencial-pesquero-de-islay.astro, que tenía la nota incrustada. El
+// archivo local se borró a propósito: mientras existiera como respaldo, despublicar
+// esa nota desde el panel la haría reaparecer — justo lo contrario de lo que espera
+// quien la despublica.
+//
+// Astro genera /blog/<slug>/index.html (build.format 'directory' por defecto), o sea
+// una carpeta real por nota. Eso es indispensable acá: el server no tiene fallback de
+// SPA, una ruta que no existe da 404. Y coincide con el article_url_pattern del tenant
+// (https://sosiaspilcueta.com/blog/{slug}/), que es el link de "ver artículo" del panel.
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/global/Header.astro";
+import HeaderLaptop from "../../components/global/HeaderLaptop.astro";
+import HeaderMobile from "../../components/global/HeaderMobile.astro";
+import ArticuloDetalle from "../../components/sections/ArticuloDetalle.astro";
+import ArticuloDetalleLaptop from "../../components/sections/laptop/ArticuloDetalleLaptop.astro";
+import ArticuloDetalleMobile from "../../components/sections/mobile/ArticuloDetalleMobile.astro";
+import { fetchArticles, type BravoArticle } from "../../lib/bravo";
+
+export async function getStaticPaths() {
+  // Si Bravo no responde, fetchArticles TIRA y el build falla. Es deliberado:
+  // deploy.yml hace rsync --delete, así que un build que degradara a cero artículos
+  // borraría del servidor todas las notas vivas, con el deploy en verde.
+  const articles = await fetchArticles();
+
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+    props: {
+      article,
+      // "Post recientes" del sidebar: las 4 más nuevas que no sean esta.
+      recent: articles.filter((a) => a.slug !== article.slug).slice(0, 4),
+    },
+  }));
+}
+
+interface Props {
+  article: BravoArticle;
+  recent: BravoArticle[];
+}
+
+const { article, recent } = Astro.props;
+
+const title = article.seo_title || `${article.title} — Sosi Aspilcueta`;
+const description = article.seo_description || article.excerpt || undefined;
+---
+
+<Layout
+  title={title}
+  description={description}
+  ogImage={article.og_image_url ?? article.cover_image_url ?? undefined}
+  canonical={article.canonical_url ?? undefined}
+  noindex={article.noindex}
+  ogType="article"
+  publishedTime={article.published_at}
+>
+  <!-- Desktop version (>= 1366px) -->
+  <div class="desktop-only">
+    <Header />
+    <main>
+      <ArticuloDetalle article={article} recent={recent} />
+    </main>
+  </div>
+
+  <!-- Laptop version (<= 1366px, > 430px) -->
+  <div class="laptop-only">
+    <HeaderLaptop />
+    <main>
+      <ArticuloDetalleLaptop article={article} recent={recent} />
+    </main>
+  </div>
+
+  <!-- Mobile version (<= 430px) -->
+  <div class="mobile-only">
+    <HeaderMobile />
+    <main>
+      <ArticuloDetalleMobile article={article} recent={recent} />
+    </main>
+  </div>
+</Layout>

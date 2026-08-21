@@ -4,9 +4,33 @@ import "../styles/global.css";
 interface Props {
   title?: string;
   description?: string;
+  /** Imagen para compartir en redes. */
+  ogImage?: string;
+  /** Canónica explícita; por defecto, la URL de la página. */
+  canonical?: string;
+  noindex?: boolean;
+  /** "article" en el detalle de una nota, "website" en el resto. */
+  ogType?: "website" | "article";
+  /** ISO 8601, solo para artículos. */
+  publishedTime?: string;
 }
 
-const { title = "SOSI", description = "Sosi Aspilcueta — Teniente Alcaldesa de Mejía, Arequipa" } = Astro.props;
+const {
+  title = "SOSI",
+  description = "Sosi Aspilcueta — Teniente Alcaldesa de Mejía, Arequipa",
+  ogImage,
+  canonical,
+  noindex = false,
+  ogType = "website",
+  publishedTime,
+} = Astro.props;
+
+// Astro.site sale de astro.config.mjs (https://sosiaspilcueta.com), así que estas
+// URLs quedan absolutas — que es lo que piden og:url y og:image. Al ser un sitio
+// estático con rutas reales, este <head> se prerenderiza por artículo: los crawlers
+// y el preview de WhatsApp lo ven sin ejecutar JS.
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
+const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : undefined;
 ---
 
 <!doctype html>
@@ -15,6 +39,23 @@ const { title = "SOSI", description = "Sosi Aspilcueta — Teniente Alcaldesa de
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="Sosi Aspilcueta" />
+    <meta property="og:locale" content="es_PE" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+
+    <meta name="twitter:card" content={ogImageUrl ? "summary_large_image" : "summary"} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
+
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

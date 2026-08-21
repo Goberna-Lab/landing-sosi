@@ -24,41 +24,64 @@
   <p style="position: absolute; left: 211px; top: 488px; font-size: 14px; font-weight: 400; color: #121822; margin: 0;">Facebook</p>
 
   <!-- Contact form card -->
-  <div class="rounded-[10px]" style="position: absolute; left: 657px; top: 80px; width: 514px; height: 455px; background: #fff; box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16);">
+  <form data-bravo-contact class="rounded-[10px]" style="position: absolute; left: 657px; top: 80px; width: 514px; height: 455px; background: #fff; box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16);">
 
-    <p style="position: absolute; left: 6.61%; top: 8.79%; font-family: var(--font-heading); font-size: 0.625rem; font-weight: 400; color: #1B1F28; text-transform: uppercase; letter-spacing: 0.8px; margin: 0;">NOMBRES</p>
-    <p style="position: absolute; left: 6.61%; top: 14.73%; font-family: var(--font-heading); font-size: 0.6875rem; font-weight: 400; color: rgba(27,31,40,0.6); letter-spacing: 0.88px; margin: 0;">Tu nombre</p>
-    <div style="position: absolute; left: 7.09%; top: 19.94%; width: 41.21%; height: 1px; background: #C0C1C7;"></div>
+    <p class="bravo-hp" aria-hidden="true">
+      <label>No completes este campo<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+    </p>
 
-    <p style="position: absolute; left: 52.14%; top: 9.01%; font-family: var(--font-heading); font-size: 0.625rem; font-weight: 400; color: #1B1F28; text-transform: uppercase; margin: 0;">Correo</p>
-    <p style="position: absolute; left: 52.14%; top: 14.73%; font-family: var(--font-heading); font-size: 0.6875rem; font-weight: 400; color: rgba(27,31,40,0.6); margin: 0;">Tus apellidos</p>
-    <div style="position: absolute; left: 51.98%; top: 19.94%; width: 41.21%; height: 1px; background: #C0C1C7;"></div>
+    <label for="cl-nombre" style="position: absolute; left: 6.61%; top: 8.79%; font-family: var(--font-heading); font-size: 0.625rem; font-weight: 400; color: #1B1F28; text-transform: uppercase; letter-spacing: 0.8px; margin: 0;">NOMBRES</label>
+    <input id="cl-nombre" class="bravo-field" type="text" name="name" required maxlength="200" autocomplete="name" placeholder="Tu nombre"
+      style="position: absolute; left: 6.61%; top: 14.73%; width: 41.21%; font-family: var(--font-heading); font-size: 0.6875rem; font-weight: 400; letter-spacing: 0.88px; line-height: 1.6;" />
+    <div class="bravo-line" style="position: absolute; left: 7.09%; top: 19.94%; width: 41.21%; height: 1px; background: #C0C1C7;"></div>
 
-    <p style="position: absolute; left: 7.00%; top: 25.49%; font-family: var(--font-heading); font-size: 0.625rem; font-weight: 400; color: #1B1F28; text-transform: uppercase; margin: 0;">Distrito o sector</p>
-    <p style="position: absolute; left: 7.00%; top: 31.98%; font-family: var(--font-heading); font-size: 0.6875rem; font-weight: 400; color: rgba(27,31,40,0.6); margin: 0;">tu@correo.com</p>
-    <div style="position: absolute; left: 7.09%; top: 37.31%; width: 41.21%; height: 1px; background: #C0C1C7;"></div>
+    <label for="cl-correo" style="position: absolute; left: 52.14%; top: 9.01%; font-family: var(--font-heading); font-size: 0.625rem; font-weight: 400; color: #1B1F28; text-transform: uppercase; margin: 0;">Correo</label>
+    <input id="cl-correo" class="bravo-field" type="email" name="email" required maxlength="200" autocomplete="email" placeholder="tu@correo.com"
+      style="position: absolute; left: 52.14%; top: 14.73%; width: 41.21%; font-family: var(--font-heading); font-size: 0.6875rem; font-weight: 400; line-height: 1.6;" />
+    <div class="bravo-line" style="position: absolute; left: 51.98%; top: 19.94%; width: 41.21%; height: 1px; background: #C0C1C7;"></div>
 
-    <p style="position: absolute; left: 52.05%; top: 25.49%; font-family: var(--font-heading); font-size: 0.625rem; font-weight: 400; color: #1B1F28; text-transform: uppercase; margin: 0;">Teléfono</p>
-    <p style="position: absolute; left: 52.05%; top: 31.98%; font-family: var(--font-heading); font-size: 0.6875rem; font-weight: 400; color: rgba(27,31,40,0.6); margin: 0;">+51 000 000 000</p>
-    <div style="position: absolute; left: 51.98%; top: 37.31%; width: 41.21%; height: 1px; background: #C0C1C7;"></div>
+    <label for="cl-distrito" style="position: absolute; left: 7.00%; top: 25.49%; font-family: var(--font-heading); font-size: 0.625rem; font-weight: 400; color: #1B1F28; text-transform: uppercase; margin: 0;">Distrito o sector</label>
+    <input id="cl-distrito" class="bravo-field" type="text" name="distrito" maxlength="120" placeholder="ej: Mejía, Deán Valdivia"
+      style="position: absolute; left: 7.00%; top: 31.98%; width: 41.21%; font-family: var(--font-heading); font-size: 0.6875rem; font-weight: 400; line-height: 1.6;" />
+    <div class="bravo-line" style="position: absolute; left: 7.09%; top: 37.31%; width: 41.21%; height: 1px; background: #C0C1C7;"></div>
 
-    <p style="position: absolute; left: 7.00%; top: 42.95%; font-family: var(--font-heading); font-size: 0.625rem; font-weight: 400; color: #1B1F28; text-transform: uppercase; margin: 0;">Motivo del mensaje</p>
-    <p style="position: absolute; left: 7.00%; top: 49.43%; font-family: var(--font-heading); font-size: 0.6875rem; font-weight: 400; color: #1B1F28; letter-spacing: 0.88px; margin: 0;">Seleccione</p>
-    <div style="position: absolute; left: 7.09%; top: 54.77%; width: 86.10%; height: 1px; background: #C0C1C7;"></div>
+    <label for="cl-telefono" style="position: absolute; left: 52.05%; top: 25.49%; font-family: var(--font-heading); font-size: 0.625rem; font-weight: 400; color: #1B1F28; text-transform: uppercase; margin: 0;">Teléfono</label>
+    <input id="cl-telefono" class="bravo-field" type="tel" name="phone" maxlength="50" autocomplete="tel" placeholder="+51 000 000 000"
+      style="position: absolute; left: 52.05%; top: 31.98%; width: 41.21%; font-family: var(--font-heading); font-size: 0.6875rem; font-weight: 400; line-height: 1.6;" />
+    <div class="bravo-line" style="position: absolute; left: 51.98%; top: 37.31%; width: 41.21%; height: 1px; background: #C0C1C7;"></div>
 
-    <p style="position: absolute; left: 7.00%; top: 60.40%; font-family: var(--font-heading); font-size: 0.625rem; font-weight: 400; color: #1B1F28; text-transform: uppercase; margin: 0;">Mensaje opcional</p>
-    <p style="position: absolute; left: 7.00%; top: 66.89%; font-family: var(--font-heading); font-size: 0.6875rem; font-weight: 400; color: rgba(27,31,40,0.6); margin: 0;">Cuéntamos cómo te gustaría sumarte</p>
-    <div style="position: absolute; left: 7.09%; top: 77.82%; width: 86.10%; height: 1px; background: #C0C1C7;"></div>
+    <label for="cl-motivo" style="position: absolute; left: 7.00%; top: 42.95%; font-family: var(--font-heading); font-size: 0.625rem; font-weight: 400; color: #1B1F28; text-transform: uppercase; margin: 0;">Motivo del mensaje</label>
+    <select id="cl-motivo" class="bravo-field" name="motivo"
+      style="position: absolute; left: 7.00%; top: 49.43%; width: 86.10%; font-family: var(--font-heading); font-size: 0.6875rem; font-weight: 400; letter-spacing: 0.88px; line-height: 1.6;">
+      <option value="">Seleccione</option>
+      <option value="Quiero ser voluntario/a">Quiero ser voluntario/a</option>
+      <option value="Tengo una propuesta o idea">Tengo una propuesta o idea</option>
+      <option value="Quiero reportar un problema">Quiero reportar un problema</option>
+      <option value="Prensa">Prensa</option>
+      <option value="Otro">Otro</option>
+    </select>
+    <div class="bravo-line" style="position: absolute; left: 7.09%; top: 54.77%; width: 86.10%; height: 1px; background: #C0C1C7;"></div>
 
-    <a href="#" class="inline-flex items-center justify-center rounded-[6px]" style="position: absolute; left: 7.02%; top: 85.54%; width: 34.05%; height: 9.23%; background: #d70202; color: #fff; font-family: var(--font-body); font-size: 0.625rem; font-weight: 400; line-height: 25px; margin: 0; gap: 8px;">
-      <span>QUIERO SUMARME</span>
+    <label for="cl-mensaje" style="position: absolute; left: 7.00%; top: 60.40%; font-family: var(--font-heading); font-size: 0.625rem; font-weight: 400; color: #1B1F28; text-transform: uppercase; margin: 0;">Mensaje opcional</label>
+    <textarea id="cl-mensaje" class="bravo-field" name="message" maxlength="5000" rows="2" placeholder="Cuéntanos cómo te gustaría sumarte"
+      style="position: absolute; left: 7.00%; top: 66.89%; width: 86.10%; height: 10.5%; font-family: var(--font-heading); font-size: 0.6875rem; font-weight: 400; line-height: 1.6;"></textarea>
+    <div class="bravo-line" style="position: absolute; left: 7.09%; top: 77.82%; width: 86.10%; height: 1px; background: #C0C1C7;"></div>
+
+    <button type="submit" data-bravo-submit class="bravo-submit inline-flex items-center justify-center rounded-[6px]" style="position: absolute; left: 7.02%; top: 85.54%; width: 34.05%; height: 9.23%; background: #d70202; color: #fff; font-size: 0.625rem; font-weight: 400; line-height: 25px; margin: 0; gap: 8px;">
+      <span data-bravo-submit-label>QUIERO SUMARME</span>
       <svg class="btn-arrow" width="12" height="10" viewBox="0 0 25 21" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M23.8094 10.7541L14.7707 19.7928C14.3783 20.1852 13.742 20.1852 13.3496 19.7928C12.9572 19.4003 12.9572 18.7641 13.3496 18.3717L20.6747 11.0478H1.0043C0.449642 11.0478 0 10.5982 0 10.0435C0 9.48887 0.449642 9.03924 1.0043 9.03924H20.6747L13.3496 1.7154C12.9572 1.32298 12.9572 0.686738 13.3496 0.294316C13.742 -0.0981054 14.3783 -0.0981054 14.7707 0.294316L23.8094 9.33299C23.998 9.52137 24.1039 9.77699 24.1039 10.0435C24.1039 10.3101 23.998 10.5657 23.8094 10.7541Z" fill="#fff"/>
       </svg>
-    </a>
+    </button>
 
-  </div>
+    <p class="bravo-status" data-bravo-status role="status" aria-live="polite" style="position: absolute; left: 43%; top: 85.54%; width: 50%; font-size: 0.625rem; margin: 0;"></p>
+
+  </form>
 
   <!-- Red gradient bar at bottom -->
   <div style="position: absolute; left: 0; bottom: 0; width: 100%; height: 30px; background: linear-gradient(90deg, #d70202 1.88%, #b30202 84.97%, #6c0101 111.44%);"></div>
 </div>
+
+<script>
+  import '../../../scripts/contact';
+</script>
